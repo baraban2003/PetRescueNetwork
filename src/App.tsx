@@ -1,5 +1,41 @@
-function App() {
-  return <div>App</div>
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
+import classNames from 'classnames';
+import s from "./app.module.css";
+import Logo from "./assets/icons/logo.svg?react";
+
+const getActiveLinkClass
+  = ({ isActive }: { isActive: boolean }) => classNames(s.navbar, {
+    [s.navbar__active]: isActive,
+  });
+
+export function App() {
+  const location = useLocation();
+
+  return (
+    <div>
+      <header className={s.header}>
+        <Link to="/"  >
+          <div className={s.logo}>
+            <Logo />
+          </div>
+        </Link>
+
+        <NavLink className={getActiveLinkClass} to="/">
+          Home
+        </NavLink>
+
+        <NavLink
+          className={getActiveLinkClass}
+          to={{
+            pathname: 'pets',
+            search: location.search,
+          }}
+        >
+          Pets
+        </NavLink>
+      </header>
+      <Outlet />
+    </div>)
 }
 
 export default App

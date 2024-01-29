@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 30px;
+  display: flex;
+  margin-right: 30px;
+}
+
+.navbar:not(:last-child) {
+  display: flex;
+  margin-right: 10px;
+}
+
+.navbar {
+  background-color: aquamarine;
+}
+
+.navbar__active {
+  background-color: green;
+}
