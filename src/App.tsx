@@ -1,20 +1,21 @@
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
-import classNames from 'classnames';
-import s from "./app.module.css";
-import Logo from "./assets/icons/logo.svg?react";
+import classNames from "classnames"
+import s from "./app.module.css"
+import Logo from "./assets/icons/logo.svg?react"
+import { Footer } from "./components/Footer"
 
-const getActiveLinkClass
-  = ({ isActive }: { isActive: boolean }) => classNames(s.navbar, {
+const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames(s.navbar, {
     [s.navbar__active]: isActive,
-  });
+  })
 
 export function App() {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <div>
       <header className={s.header}>
-        <Link to="/"  >
+        <Link to="/">
           <div className={s.logo}>
             <Logo />
           </div>
@@ -27,7 +28,7 @@ export function App() {
         <NavLink
           className={getActiveLinkClass}
           to={{
-            pathname: 'pets',
+            pathname: "pets",
             search: location.search,
           }}
         >
@@ -35,7 +36,9 @@ export function App() {
         </NavLink>
       </header>
       <Outlet />
-    </div>)
+      <Footer />
+    </div>
+  )
 }
 
 export default App
