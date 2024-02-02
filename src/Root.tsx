@@ -4,7 +4,7 @@ import { HomePage } from "./pages/HomePage/HomePage"
 import { NotFoundPage } from "./pages/NotFoundPage"
 import { Registration } from "./pages/Registration/Registration"
 import { Suspense } from "react"
-import { Spinner } from "./pages/LoaderPage/LoaderPage"
+import { Spinner } from "./pages/Spinner"
 
 export const Root = () => (
   <Router>

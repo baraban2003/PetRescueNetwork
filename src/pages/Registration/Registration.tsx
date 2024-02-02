@@ -7,6 +7,7 @@ import { SecondStepRef } from "./SecondStepReg/SecondStepReg"
 import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { unwrapResult } from "@reduxjs/toolkit"
+import { Spinner } from "../Spinner"
 
 export const Registration = () => {
   const TOTAL_STEPS = 2
