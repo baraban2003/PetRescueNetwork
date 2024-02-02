@@ -1,0 +1,35 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  position: relative;
+}
+.input {
+  box-sizing: border-box;
+  max-width: 640px;
+  height: 48px;
+  padding: 14px 24px 14px 24px;
+  border-radius: 30px;
+  border: 1px solid #242629;
+}
+
+.eyeIcon {
+  position: absolute;
+  bottom: 0;
+  right: 16.5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777; /* Change the color as needed */
+}
+
+/* Optional: Adjust the icon size */
+.eyeIcon svg {
+  font-size: 1.2em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

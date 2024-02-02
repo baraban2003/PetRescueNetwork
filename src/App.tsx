@@ -2,7 +2,8 @@ import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
 import classNames from "classnames"
 import s from "./app.module.css"
 import Logo from "./assets/icons/logo.svg?react"
-import { Footer } from "./components/Footer"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(s.navbar, {
@@ -14,6 +15,7 @@ export function App() {
 
   return (
     <div>
+      <ToastContainer />
       <header className={s.header}>
         <Link to="/">
           <div className={s.logo}>
@@ -34,9 +36,16 @@ export function App() {
         >
           Pets
         </NavLink>
+
+        <NavLink to="/register" className={getActiveLinkClass}>
+          Sign Up
+        </NavLink>
+
+        <NavLink to="/login" className={getActiveLinkClass}>
+          Sign In
+        </NavLink>
       </header>
       <Outlet />
-      <Footer />
     </div>
   )
 }
