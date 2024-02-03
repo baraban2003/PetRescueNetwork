@@ -1,28 +1,48 @@
 .label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  max-width: 640px;
+  position: relative;
+  margin-bottom: 45px;
 }
 
-.registration {
+.label__text {
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0 0 8px 32px;
+  color: #6c727a;
+}
+
+.input {
+  box-sizing: border-box;
+  max-width: 640px;
+  height: 48px;
+  padding: 14px 24px 14px 24px;
+  border-radius: 30px;
+  border: 1px solid #242629;
+}
+
+.login {
   display: flex;
   gap: 32px;
   justify-content: space-around;
 }
 
-.registration__picture {
+.login__picture {
   width: 640px;
   height: 644px;
   background-color: #d9d9d9;
 }
 
-.registration__block {
+.login__block {
   width: 640px;
   position: relative;
   top: -22px;
 }
 
-.registration__step {
+.login__step {
   font-family: Montserrat;
   text-transform: uppercase;
   font-size: 12px;
@@ -34,7 +54,7 @@
   margin-bottom: 24px;
 }
 
-.registration__title {
+.login__title {
   font-family: Montserrat;
   font-size: 40px;
   font-weight: 700;
@@ -44,7 +64,7 @@
   color: #242629;
 }
 
-.registration__acc {
+.login__acc {
   font-family: Gambetta;
   font-size: 18px;
   font-weight: 400;
@@ -55,7 +75,7 @@
   margin-bottom: 40px;
 }
 
-.registration__link {
+.login__link {
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 600;
@@ -88,14 +108,22 @@
   color: #000;
 }
 
-.button__continue {
-  margin-top: 109px;
+.eyeIcon {
+  position: absolute;
+  bottom: 0;
+  right: 16.5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777; /* Change the color as needed */
 }
 
-.button__back {
-  margin-top: 16px;
-  margin-bottom: 25px;
-  border: 1px solid #000;
-  color: #000;
-  background-color: white;
+.eyeIcon svg {
+  font-size: 1.2em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

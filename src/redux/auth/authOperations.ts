@@ -1,22 +1,9 @@
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 import { toast } from "react-toastify"
+import { ApiResponse, Credentials, Login } from "../../services/types"
 
 axios.defaults.baseURL = "https://mate.academy/students-api"
-
-type Credentials = {
-  email: string
-  password: string
-  name: string
-  secondName: string
-  date: string
-  phone: string
-}
-
-type ApiResponse = {
-  user: any
-  token: string
-}
 
 const token = {
   set(token: string) {
@@ -27,11 +14,11 @@ const token = {
   },
 }
 
-const register: AsyncThunk<ApiResponse, Credentials, {}> = createAsyncThunk(
+const register = createAsyncThunk(
   "auth/register",
-  async (credentials, thunkAPI) => {
+  async (credentials: Credentials | null, thunkAPI) => {
     try {
-      const { data } = await axios.post("/auth/register", credentials)
+      const { data }: any = axios.post("/auth/register", credentials)
       token.set(data.token)
       toast.success("Register is success.")
 
@@ -44,19 +31,22 @@ const register: AsyncThunk<ApiResponse, Credentials, {}> = createAsyncThunk(
   },
 )
 
-const logIn = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post("/auth/login", credentials)
-    token.set(data.token)
-    toast.success("Authentification success!")
+const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials: Login, thunkAPI) => {
+    try {
+      const { data } = await axios.post("/auth/login", credentials)
+      token.set(data.token)
+      toast.success("Authentification success!")
 
-    return data
-  } catch (error) {
-    toast.error("Error. Try other credentials!")
+      return data
+    } catch (error) {
+      toast.error("Error. Try other credentials!")
 
-    return thunkAPI.rejectWithValue(error)
-  }
-})
+      return thunkAPI.rejectWithValue(error)
+    }
+  },
+)
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {

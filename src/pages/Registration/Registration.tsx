@@ -7,7 +7,7 @@ import { SecondStepRef } from "./SecondStepReg/SecondStepReg"
 import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { unwrapResult } from "@reduxjs/toolkit"
-import { Spinner } from "../Spinner"
+import classNames from "classnames"
 
 export const Registration = () => {
   const TOTAL_STEPS = 2
@@ -110,52 +110,71 @@ export const Registration = () => {
     })
   }
   return (
-    <div>
-      <p>
-        STEP {currentStep} of {TOTAL_STEPS}
-      </p>
-      <h1>Create an account</h1>
-      <p>
-        Already have an account? <Link to="/login">Sign in</Link>
-      </p>
+    <div className={s.registration}>
+      <div className={s.registration__picture}></div>
+      <div className={s.registration__block}>
+        <p className={s.registration__step}>
+          STEP {currentStep} of {TOTAL_STEPS}
+        </p>
+        <h1 className={s.registration__title}>Create an account</h1>
+        <p className={s.registration__acc}>
+          Already have an account?{" "}
+          <Link className={s.registration__link} to="/login">
+            Sign in
+          </Link>
+        </p>
 
-      <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
-        {currentStep === 1 && (
-          <FirstStepRef
-            email={email}
-            password={password}
-            handleChange={handleChange}
-          />
-        )}
-        {currentStep === 2 && (
-          <SecondStepRef
-            name={name}
-            secondName={secondName}
-            date={date}
-            phone={phone}
-            handleChange={handleChange}
-            handlePhoneChange={handlePhoneChange}
-          />
-        )}
-
-        <div className={s.buttonContainer}>
-          {currentStep > 1 && (
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+        <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+          {currentStep === 1 && (
+            <FirstStepRef
+              email={email}
+              password={password}
+              handleChange={handleChange}
+            />
+          )}
+          {currentStep === 2 && (
+            <SecondStepRef
+              name={name}
+              secondName={secondName}
+              date={date}
+              phone={phone}
+              handleChange={handleChange}
+              handlePhoneChange={handlePhoneChange}
+            />
           )}
 
-          {currentStep < TOTAL_STEPS ? (
-            <button type="button" onClick={handleNextPage}>
-              Continue
-            </button>
-          ) : (
-            <button type="button" onClick={handleSubmit}>
-              Submit
-            </button>
-          )}
-        </div>
-      </form>
+          <div className={s.buttonContainer}>
+            {currentStep > 1 && (
+              <button
+                className={classNames(s.button, s.button__back)}
+                type="button"
+                onClick={handleBack}
+              >
+                Back
+              </button>
+            )}
+
+            {currentStep < TOTAL_STEPS ? (
+              <button
+                className={classNames(s.button, s.button__continue)}
+                type="button"
+                onClick={handleNextPage}
+              >
+                Continue
+              </button>
+            ) : (
+              <button
+                className={classNames(s.button, s.button__submit)}
+                type="button"
+                onClick={handleSubmit}
+                disabled={!validateSubbmit()}
+              >
+                Submit
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

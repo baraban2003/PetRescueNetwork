@@ -26,7 +26,7 @@ export const FirstStepRef: React.FC<Props> = ({
     <div>
       <Form.Group className={s.group}>
         <Form.Label className={s.label}>
-          Email address
+          <span className={s.label__text}>Email address</span>
           <Form.Control
             className={s.input}
             type="email"
@@ -40,7 +40,8 @@ export const FirstStepRef: React.FC<Props> = ({
         </Form.Label>
 
         <Form.Label className={s.label}>
-          Password
+          <span className={s.label__text}>Password</span>
+
           <Form.Control
             className={s.input}
             type={showPassword ? "text" : "password"}

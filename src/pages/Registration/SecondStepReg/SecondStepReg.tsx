@@ -27,7 +27,8 @@ export const SecondStepRef: React.FC<Props> = ({
     <div>
       <Form.Group className={s.group}>
         <Form.Label className={s.label}>
-          Enter your first name
+          <span className={s.label__text}> Enter your first name</span>
+
           <Form.Control
             className={s.input}
             type="text"
@@ -40,7 +41,8 @@ export const SecondStepRef: React.FC<Props> = ({
         </Form.Label>
 
         <Form.Label className={s.label}>
-          Enter your second name
+          <span className={s.label__text}> Enter your second name</span>
+
           <Form.Control
             className={s.input}
             type="text"
@@ -53,7 +55,8 @@ export const SecondStepRef: React.FC<Props> = ({
         </Form.Label>
 
         <Form.Label className={s.label}>
-          Date of birth
+          <span className={s.label__text}>Date of birth</span>
+
           <Form.Control
             className={s.input}
             type="date"
@@ -66,7 +69,8 @@ export const SecondStepRef: React.FC<Props> = ({
         </Form.Label>
 
         <Form.Label className={s.label}>
-          What’s your mobile number?
+          <span className={s.label__text}>What’s your mobile number?</span>
+
           <PhoneInput
             containerStyle={{
               fontFamily: "inherit",

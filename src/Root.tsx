@@ -3,6 +3,7 @@ import App from "./App"
 import { HomePage } from "./pages/HomePage/HomePage"
 import { NotFoundPage } from "./pages/NotFoundPage"
 import { Registration } from "./pages/Registration/Registration"
+import { Login } from "./pages/LoginPage/"
 import { Suspense } from "react"
 import { Spinner } from "./pages/Spinner"
 
@@ -11,10 +12,11 @@ export const Root = () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
-        <Route path="home" element={<HomePage />} />
-        <Route path="pets">
-          <Route path=":pet?" element={<HomePage />} />
+        <Route path="helpforfluffies">
+          <Route path=":fluffie?" element={<HomePage />} />
         </Route>
+        <Route path="howtohelp" element={<HomePage />} />
+        <Route path="yourkindhearts" element={<HomePage />} />
         <Route
           path="register"
           element={
@@ -30,7 +32,7 @@ export const Root = () => (
           element={
             <Suspense fallback={<Spinner />}>
               {/* <PublicRoute restricted> */}
-              <Registration />
+              <Login />
 
               {/* </PublicRoute> */}
             </Suspense>

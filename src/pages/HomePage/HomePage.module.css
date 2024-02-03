@@ -1,0 +1,30 @@
+.homePage {
+  display: flex;
+  justify-content: space-around;
+  gap: 36px;
+}
+
+.homePage__picture {
+  width: 640px;
+  height: 644px;
+  background-color: #d9d9d9;
+}
+
+.homePage__block {
+  width: 640px;
+}
+.homePage__text {
+  position: relative;
+  top: -17px;
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+  font-weight: 800;
+  font-size: 90px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.homePage__text:not(:last-child) {
+  margin-bottom: 60px;
+}

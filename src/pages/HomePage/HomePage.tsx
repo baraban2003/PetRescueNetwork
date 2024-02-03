@@ -1,10 +1,18 @@
+import s from "./HomePage.module.css"
+
 export function HomePage() {
   return (
     <>
-      <section>
-        <h1>Home Page</h1>
-        <p>Welcome to the best resource for saving contacts you have.</p>
-        <p>For using this application please Register.</p>
+      <section className={s.homePage}>
+        <div className={s.homePage__picture}></div>
+        <div className={s.homePage__block}>
+          <h1 className={s.homePage__text}>
+            Extend a Paw <br /> Share the Care
+          </h1>
+          <h2 className={s.homePage__text}>
+            Support Our <br /> Fluffy Friends <br /> in Need.
+          </h2>
+        </div>
       </section>
     </>
   )
