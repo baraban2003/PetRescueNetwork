@@ -15,8 +15,8 @@ export const Root = () => (
         <Route path="helpforfluffies">
           <Route path=":fluffie?" element={<HomePage />} />
         </Route>
-        <Route path="howtohelp" element={<HomePage />} />
-        <Route path="yourkindhearts" element={<HomePage />} />
+        <Route path="howtohelp" element={<Spinner />} />
+        <Route path="yourkindhearts" element={<Spinner />} />
         <Route
           path="register"
           element={

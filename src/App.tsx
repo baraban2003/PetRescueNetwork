@@ -11,16 +11,6 @@ const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
     [s.navbar__active]: isActive,
   })
 
-const getActiveButtonLogin = ({ isActive }: { isActive: boolean }) =>
-  classNames(s.authButton, s.authButtonLogin, {
-    [s.authButtonLogin__active]: isActive,
-  })
-
-const getActiveButtonRegister = ({ isActive }: { isActive: boolean }) =>
-  classNames(s.authButton, s.authButtonRegister, {
-    [s.authButtonRegister__active]: isActive,
-  })
-
 export function App() {
   const [navigationVisible, setNavigationVisible] = useState(true)
   const location = useLocation()
@@ -84,7 +74,7 @@ export function App() {
             <div className={s.auth}>
               <NavLink
                 to="/login"
-                className={getActiveButtonLogin}
+                className={classNames(s.authButton, s.authButtonLogin)}
                 onClick={hideNavigation}
               >
                 Log In
@@ -92,7 +82,7 @@ export function App() {
 
               <NavLink
                 to="/register"
-                className={getActiveButtonRegister}
+                className={classNames(s.authButton, s.authButtonRegister)}
                 onClick={hideNavigation}
               >
                 Sign Up
