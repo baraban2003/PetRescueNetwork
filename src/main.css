@@ -1,12 +1,21 @@
 body {
-  margin: 0;
-  font-family: General Sans, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue";
+  --blueDark: #2684a6;
+  --blueLight: #3591b2;
+  --yellow: #ffd43b;
+  --sand: #f7f5ee;
+
+  --gray100: #242629;
+
+  font-family: "General Sans", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 40px 64px 81px;
+  background-color: var(--sand);
+  color: var(--gray100);
 }
 
 code {
@@ -35,10 +44,6 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-
-body {
-  margin: 0;
-}
 
 /**
  * Render the `main` element consistently in IE.
