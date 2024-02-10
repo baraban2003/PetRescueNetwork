@@ -1,10 +1,13 @@
 body {
-  --blueDark: #2684a6;
-  --blueLight: #3591b2;
-  --yellow: #ffd43b;
+  --Primary100: #2684a6;
+  --Primary70: #3591b2;
+  --Secondary100: #ffd43b;
   --sand: #f7f5ee;
 
   --gray100: #242629;
+  --Gray80: #3c3f44;
+
+  --transition: all 0.3s ease-in-out;
 
   font-family: "General Sans", sans-serif;
   font-size: 16px;

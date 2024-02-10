@@ -1,18 +1,12 @@
-import { Oval } from "react-loader-spinner"
-
-import style from "./Spinner.module.css"
+import s from "./Spinner.module.css"
+import Logo from "../../assets/images/spinner.svg?react"
 
 export const Spinner = () => {
   return (
-    <div className={style.container}>
-      <Oval
-        ariaLabel="loading-indicator"
-        height={50}
-        width={50}
-        strokeWidth={5}
-        color="#FF6B08"
-        secondaryColor="#6D7A8D"
-      />
+    <div className={s.spinnerContainer}>
+      <div className={s.logo}>
+        <Logo />
+      </div>
     </div>
   )
 }
