@@ -249,7 +249,7 @@ export const Registration = () => {
           </div>
         </form>
         <img
-          src="/src/assets/images/dogSide.png"
+          src="./src/assets/images/dogSide.png"
           alt="dog"
           className={s.registration__picture}
         />
