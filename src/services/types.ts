@@ -3,7 +3,6 @@ export type Credentials = {
   password: string
   name: string
   secondName: string
-  date: string
   phone: string
 }
 

@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
+import navigationVisibleReducer from "./navigationVisible/navigationVisibleSlice"
 import {
   persistStore,
   persistReducer,
@@ -19,9 +20,19 @@ const authPersistConfig = {
   whitelist: ["token"],
 }
 
+const navigationVisiblePersistConfig = {
+  key: "navigationVisible",
+  storage,
+  whitelist: ["navigationVisible"],
+}
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
+    navigationVisible: persistReducer(
+      navigationVisiblePersistConfig,
+      navigationVisibleReducer,
+    ),
   },
 
   middleware: (getDefaultMiddleware) =>

@@ -15,10 +15,6 @@
   transition: var(--transition);
 }
 
-.logo:hover {
-  transform: scale(1.1);
-}
-
 .logoText {
   cursor: pointer;
   font-size: 48px;
@@ -31,18 +27,13 @@
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.logoText:hover {
-  color: var(--Primary100);
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-}
-
 .logo .logoIcon {
   width: 120px;
   height: 128px;
   display: flex;
   position: relative;
-  left: -8%;
-  top: 38px;
+  left: -23px;
+  top: 36px;
 }
 
 .navbar {

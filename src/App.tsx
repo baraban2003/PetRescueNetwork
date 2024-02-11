@@ -4,7 +4,9 @@ import s from "./App.module.css"
 import Logo from "./assets/icons/logo.svg?react"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { useState } from "react"
+import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "./services/hooks"
+import * as navigationVisibleAction from "./redux/navigationVisible/navigationVisibleSlice"
 
 const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(s.navbar, {
@@ -12,20 +14,31 @@ const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
   })
 
 export function App() {
-  const [navigationVisible, setNavigationVisible] = useState(true)
+  const dispatch = useAppDispatch()
   const location = useLocation()
+  const navigationVisible = useAppSelector(
+    (state) => state.navigationVisible.navigationVisible,
+  )
 
   const hideNavigation = () => {
-    setNavigationVisible(false)
+    dispatch(navigationVisibleAction.hideNavigation())
   }
 
   const showNavigation = () => {
-    if (navigationVisible === true) {
-      return
+    dispatch(navigationVisibleAction.showNavigation())
+  }
+
+  useEffect(() => {
+    const handlePopState = () => {
+      dispatch(navigationVisibleAction.showNavigation())
     }
 
-    setNavigationVisible(true)
-  }
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [dispatch])
 
   return (
     <div>

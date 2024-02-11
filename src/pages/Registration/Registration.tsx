@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
 import authOperations from "../../redux/auth/authOperations"
 import s from "../Registration/Registration.module.css"
 import { FirstStepRef } from "./FirstStepReg/FirstStepRef"
@@ -8,27 +7,45 @@ import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { unwrapResult } from "@reduxjs/toolkit"
 import classNames from "classnames"
+import CloseIcon from "../../assets/icons/close.svg?react"
+import ArrowLeft from "../../assets/icons/arrowLeft.svg?react"
+import { useAppDispatch } from "../../services/hooks"
+import * as navigationVisibleAction from "../../redux/navigationVisible/navigationVisibleSlice"
 
 export const Registration = () => {
   const TOTAL_STEPS = 2
   const [currentStep, setCurrentStep] = useState(1)
+  const [validateEmail, setValidateEmail] = useState(false)
+  const [validatePasswordLength, setValidatePasswordLength] = useState(false)
+  const [validatePasswordCase, setValidatePasswordCase] = useState(false)
+  const [validatePasswordNumber, setValidatePasswordNumber] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
     secondName: "",
-    date: "",
     phone: "",
   })
 
-  const { email, password, name, secondName, date, phone } = formData
+  const dispatch = useAppDispatch()
 
-  const dispatch = useDispatch()
+  const { email, password, name, secondName, phone } = formData
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target
+
+    if (name === "email") {
+      setValidateEmail(false)
+    }
+
+    if (name === "password") {
+      setValidatePasswordNumber(false)
+      setValidatePasswordCase(false)
+      setValidatePasswordLength(false)
+    }
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -44,6 +61,26 @@ export const Registration = () => {
 
   const handleNextPage = () => {
     const isCurrentStepValid = validateCurrentStep()
+    const isCurrentEmailValid = getValidEmail()
+    const isPasswordLength = isPasswordLengthValid(password)
+    const isPasswordCase = isPasswordCasesValid(password)
+    const isPasswordHasNumber = containsNumberOrSymbol(password)
+
+    if (!isCurrentEmailValid) {
+      setValidateEmail(true)
+    }
+
+    if (!isPasswordHasNumber) {
+      setValidatePasswordNumber(true)
+    }
+
+    if (!isPasswordCase) {
+      setValidatePasswordCase(true)
+    }
+
+    if (!isPasswordLength) {
+      setValidatePasswordLength(true)
+    }
 
     if (isCurrentStepValid) {
       setCurrentStep((prevStep) => prevStep + 1)
@@ -52,10 +89,30 @@ export const Registration = () => {
     }
   }
 
+  const getValidEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const isEmailValid = emailRegex.test(email)
+
+    return isEmailValid
+  }
+
+  const isPasswordLengthValid = (value: string) => {
+    return value.length >= 8
+  }
+
+  const isPasswordCasesValid = (value: string) => {
+    return /[a-z]/.test(value) && /[A-Z]/.test(value)
+  }
+
+  const containsNumberOrSymbol = (value: string) => {
+    return /\d|[^a-zA-Z0-9]/.test(value)
+  }
+
   const validateCurrentStep = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const isEmailValid = emailRegex.test(email)
-    const isPasswordValid = password.trim() !== ""
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d|[^a-zA-Z0-9]).{8,}$/
+    const isPasswordValid = passwordRegex.test(password)
     return isEmailValid && isPasswordValid
   }
 
@@ -65,10 +122,7 @@ export const Registration = () => {
 
   const validateSubbmit = () => {
     const isSecondFormValid =
-      name.trim() !== "" &&
-      secondName.trim() !== "" &&
-      date.trim() !== "" &&
-      phone.trim() !== ""
+      name.trim() !== "" && secondName.trim() !== "" && phone.trim() !== ""
 
     return isSecondFormValid
   }
@@ -105,14 +159,31 @@ export const Registration = () => {
       password: "",
       name: "",
       secondName: "",
-      date: "",
       phone: "",
     })
   }
+
   return (
     <div className={s.registration}>
-      <div className={s.registration__picture}></div>
       <div className={s.registration__block}>
+        <div className={s.logoButtons}>
+          {currentStep === 2 ? (
+            <div className={s.logoButton} onClick={handleBack}>
+              <ArrowLeft />
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          <Link
+            to="/"
+            className={s.logoButton}
+            onClick={() => dispatch(navigationVisibleAction.showNavigation())}
+          >
+            <CloseIcon />
+          </Link>
+        </div>
+
         <p className={s.registration__step}>
           STEP {currentStep} of {TOTAL_STEPS}
         </p>
@@ -130,13 +201,16 @@ export const Registration = () => {
               email={email}
               password={password}
               handleChange={handleChange}
+              validateEmail={validateEmail}
+              validatePasswordLength={validatePasswordLength}
+              validatePasswordCase={validatePasswordCase}
+              validatePasswordNumber={validatePasswordNumber}
             />
           )}
           {currentStep === 2 && (
             <SecondStepRef
               name={name}
               secondName={secondName}
-              date={date}
               phone={phone}
               handleChange={handleChange}
               handlePhoneChange={handlePhoneChange}
@@ -174,6 +248,11 @@ export const Registration = () => {
             )}
           </div>
         </form>
+        <img
+          src="/src/assets/images/dogSide.png"
+          alt="dog"
+          className={s.registration__picture}
+        />
       </div>
     </div>
   )

@@ -6,10 +6,14 @@ body {
 
   --gray100: #242629;
   --Gray80: #3c3f44;
+  --Gray70: #6c727a;
+  --Gray0: #ffffff;
+
+  --Error100: #dd2d2a;
 
   --transition: all 0.3s ease-in-out;
 
-  font-family: "General Sans", sans-serif;
+  font-family: "General Sans", "Gambetta", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

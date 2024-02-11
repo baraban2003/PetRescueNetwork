@@ -7,7 +7,6 @@ import "react-phone-input-2/lib/style.css"
 type Props = {
   name: string
   secondName: string
-  date: string
   phone: string
   handleChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -18,7 +17,6 @@ type Props = {
 export const SecondStepRef: React.FC<Props> = ({
   name,
   secondName,
-  date,
   phone,
   handleChange,
   handlePhoneChange,
@@ -55,27 +53,12 @@ export const SecondStepRef: React.FC<Props> = ({
         </Form.Label>
 
         <Form.Label className={s.label}>
-          <span className={s.label__text}>Date of birth</span>
-
-          <Form.Control
-            className={s.input}
-            type="date"
-            name="date"
-            value={date}
-            onChange={handleChange}
-            placeholder="Date"
-            required
-          />
-        </Form.Label>
-
-        <Form.Label className={s.label}>
           <span className={s.label__text}>What’s your mobile number?</span>
 
           <PhoneInput
             containerStyle={{
-              fontFamily: "inherit",
+              fontFamily: "Gambetta",
               boxSizing: "border-box",
-              maxWidth: "640px",
               height: "48px",
               borderRadius: "30px",
               border: "1px solid #242629",
@@ -84,10 +67,13 @@ export const SecondStepRef: React.FC<Props> = ({
               paddingLeft: "10px",
             }}
             inputStyle={{
-              fontSize: "100%",
+              fontSize: "18px",
+              fontWeight: "400",
+              lineHeight: "1.5",
               paddingLeft: "50px",
               borderWidth: 0,
               maxWidth: "95%",
+              color: "var(--gray100)",
             }}
             buttonStyle={{
               height: 24,

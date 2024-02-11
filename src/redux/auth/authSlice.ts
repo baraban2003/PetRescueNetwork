@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import authOperations from "./authOperations"
 import { User } from "../../types/User"
 
-const initialState: User = {
+export const initialState: User = {
   user: {
     email: null,
     password: null,
