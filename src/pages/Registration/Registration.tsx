@@ -11,6 +11,7 @@ import CloseIcon from "../../assets/icons/close.svg?react"
 import ArrowLeft from "../../assets/icons/arrowLeft.svg?react"
 import { useAppDispatch } from "../../services/hooks"
 import * as navigationVisibleAction from "../../redux/navigationVisible/navigationVisibleSlice"
+import dogSide from "../../assets/images/dogSide.png"
 
 export const Registration = () => {
   const TOTAL_STEPS = 2
@@ -248,11 +249,7 @@ export const Registration = () => {
             )}
           </div>
         </form>
-        <img
-          src="./src/assets/images/dogSide.png"
-          alt="dog"
-          className={s.registration__picture}
-        />
+        <img src={dogSide} alt="dog" className={s.registration__picture} />
       </div>
     </div>
   )
