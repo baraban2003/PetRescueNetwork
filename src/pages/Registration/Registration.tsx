@@ -122,7 +122,7 @@ export const Registration = () => {
     setCurrentStep((prevStep) => prevStep - 1)
   }
 
-  const validateSubbmit = () => {
+  const validateSubmit = () => {
     const isSecondFormValid =
       name.trim() !== "" && secondName.trim() !== "" && phone.trim() !== ""
 
@@ -131,7 +131,7 @@ export const Registration = () => {
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
-    const isFormDataValid = validateSubbmit()
+    const isFormDataValid = validateSubmit()
 
     if (!isFormDataValid) {
       toast.error("Please fill the empty fields!")
