@@ -1,88 +1,92 @@
+.login {
+  display: flex;
+}
+
+.login__picture {
+  width: 243.72px;
+  height: 466.94px;
+  position: absolute;
+  top: 100px;
+  right: -220.71px;
+  z-index: -1;
+}
+
+.login__block {
+  position: relative;
+  top: -109px;
+
+  box-sizing: border-box;
+  width: 976px;
+  height: 810.67px;
+
+  border: 1px solid var(--gray100);
+  border-radius: 24px;
+
+  background-color: var(--Gray0);
+  padding: 32px;
+}
+
 .label {
   display: flex;
   flex-direction: column;
-  max-width: 640px;
+  max-width: 100%;
   position: relative;
+}
+
+.inputEmail {
   margin-bottom: 45px;
+}
+
+.inputPass {
+  margin-bottom: 119px;
 }
 
 .label__text {
   font-family: Gambetta;
   font-size: 14px;
   font-weight: 400;
-  line-height: 21px;
+  line-height: 1.5;
   margin: 0 0 8px 32px;
-  color: #6c727a;
+  color: var(--Gray70);
 }
 
 .input {
   box-sizing: border-box;
-  max-width: 640px;
+  font-family: Gambetta;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--gray100);
+
   height: 48px;
   padding: 14px 24px 14px 24px;
   border-radius: 30px;
-  border: 1px solid #242629;
-}
-
-.login {
-  display: flex;
-  gap: 32px;
-  justify-content: space-around;
-}
-
-.login__picture {
-  width: 640px;
-  height: 644px;
-  background-color: #d9d9d9;
-}
-
-.login__block {
-  width: 640px;
-  position: relative;
-  top: -22px;
-}
-
-.login__step {
-  font-family: Montserrat;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 14px;
-  letter-spacing: 1px;
-  text-align: left;
-  color: #6c727a;
-  margin-bottom: 24px;
+  border: 1px solid var(--gray100);
 }
 
 .login__title {
-  font-family: Montserrat;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 40px;
-  text-align: left;
+  font-size: 64px;
+  font-weight: 600;
   margin-bottom: 8px;
-  color: #242629;
+  color: var(--gray100);
 }
 
 .login__acc {
   font-family: Gambetta;
   font-size: 18px;
   font-weight: 400;
-  line-height: 27px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #3c3f44;
+  line-height: 1.5;
+
+  color: var(--Gray80);
   margin-bottom: 40px;
 }
 
 .login__link {
-  font-family: Montserrat;
+  margin-left: 8px;
+  font-family: General Sans;
   font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #242629;
+  color: var(--Primary100);
 }
 
 .button {
@@ -91,30 +95,27 @@
   height: 64px;
   padding: 14px 32px 14px 32px;
   border-radius: 30px;
-  background-color: #6c727a;
+  background-color: var(--Gray50);
   border-width: 0;
   cursor: pointer;
 
-  font-family: Montserrat;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  color: #bbbfc4;
+  color: var(--Gray0);
   transition: var(--transition);
 }
 
 .button:hover {
-  border: 3px solid #000;
-  color: #000;
+  background-color: var(--gray100);
 }
 
 .eyeIcon {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   right: 16.5px;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #777; /* Change the color as needed */
+  color: var(--Gray70);
 }
 
 .eyeIcon svg {
@@ -126,4 +127,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.logoButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 43px;
 }

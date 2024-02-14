@@ -1,7 +1,7 @@
 .registration {
   display: flex;
-  /* gap: 32px;
-  justify-content: space-around; */
+  align-items: flex-end;
+  gap: 32px;
 }
 
 .registration__picture {
@@ -45,46 +45,37 @@
 }
 
 .registration__step {
-  font-family: Montserrat;
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 14px;
-  letter-spacing: 1px;
-  text-align: left;
-  color: #6c727a;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--Gray30);
   margin-bottom: 24px;
 }
 
 .registration__title {
-  font-family: Montserrat;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 40px;
-  text-align: left;
+  font-size: 64px;
+  font-weight: 600;
   margin-bottom: 8px;
-  color: #242629;
+  color: var(--gray100);
 }
 
 .registration__acc {
   font-family: Gambetta;
   font-size: 18px;
   font-weight: 400;
-  line-height: 27px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #3c3f44;
+  line-height: 1.5;
+
+  color: var(--Gray80);
   margin-bottom: 40px;
 }
 
 .registration__link {
-  font-family: Montserrat;
+  margin-left: 10px;
+  font-family: General Sans;
   font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #242629;
+  color: var(--Primary100);
 }
 
 .button {
@@ -93,21 +84,18 @@
   height: 64px;
   padding: 14px 32px 14px 32px;
   border-radius: 30px;
-  background-color: #6c727a;
+  background-color: var(--Gray50);
   border-width: 0;
   cursor: pointer;
 
-  font-family: Montserrat;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  color: #bbbfc4;
+  color: var(--Gray0);
   transition: var(--transition);
 }
 
 .button:hover {
-  border: 3px solid #000;
-  color: #000;
+  background-color: var(--gray100);
 }
 
 .button__back {
@@ -116,4 +104,40 @@
   border: 1px solid #000;
   color: #000;
   background-color: white;
+}
+
+.benefits {
+  width: 304px;
+  height: 195px;
+  position: relative;
+  bottom: 80px;
+}
+
+.benefitsTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.benefitsList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.benefitsListItem {
+  color: var(--Gray80);
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  background: url(../../assets/icons/listDotImage.svg) no-repeat left top;
+  padding: 0px 0px 0px 26px;
+  background-position: left 4px;
+}
+
+.benefitsListItem:not(:last-child) {
+  margin-bottom: 8px;
 }

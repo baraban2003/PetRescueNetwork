@@ -42,10 +42,9 @@
   right: 16.5px;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #777; /* Change the color as needed */
+  color: var(--Gray70);
 }
 
-/* Optional: Adjust the icon size */
 .eyeIcon svg {
   font-size: 1.2em;
 }

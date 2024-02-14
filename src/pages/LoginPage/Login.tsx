@@ -4,9 +4,12 @@ import authOperations from "../../redux/auth/authOperations"
 import s from "./Login.module.css"
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
-import { toast } from "react-toastify"
+import * as navigationVisibleAction from "../../redux/navigationVisible/navigationVisibleSlice"
 import { unwrapResult } from "@reduxjs/toolkit"
 import { HiEye, HiEyeOff } from "react-icons/hi"
+import CloseIcon from "../../assets/icons/close.svg?react"
+import dogSide from "../../assets/images/dogSide.png"
+import classNames from "classnames"
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -65,8 +68,16 @@ export const Login = () => {
 
   return (
     <div className={s.login}>
-      <div className={s.login__picture}></div>
       <div className={s.login__block}>
+        <div className={s.logoButtons}>
+          <Link
+            to="/"
+            className={s.logoButton}
+            onClick={() => dispatch(navigationVisibleAction.showNavigation())}
+          >
+            <CloseIcon />
+          </Link>
+        </div>
         <h1 className={s.login__title}>Welcome back</h1>
         <p className={s.login__acc}>
           New user?{" "}
@@ -77,7 +88,7 @@ export const Login = () => {
 
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
           <Form.Group className={s.group}>
-            <Form.Label className={s.label}>
+            <div className={classNames(s.label, s.inputEmail)}>
               <span className={s.label__text}>Email address</span>
               <Form.Control
                 className={s.input}
@@ -89,9 +100,9 @@ export const Login = () => {
                 autoComplete="on"
                 required
               />
-            </Form.Label>
+            </div>
 
-            <Form.Label className={s.label}>
+            <div className={classNames(s.label, s.inputPass)}>
               <span className={s.label__text}>Password</span>
 
               <Form.Control
@@ -106,7 +117,7 @@ export const Login = () => {
               <div className={s.eyeIcon} onClick={togglePasswordVisibility}>
                 {showPassword ? <HiEyeOff /> : <HiEye />}
               </div>
-            </Form.Label>
+            </div>
           </Form.Group>
 
           <button
@@ -118,6 +129,7 @@ export const Login = () => {
             Submit
           </button>
         </form>
+        <img src={dogSide} alt="dog" className={s.login__picture} />
       </div>
     </div>
   )

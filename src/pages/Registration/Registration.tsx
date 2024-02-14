@@ -244,13 +244,28 @@ export const Registration = () => {
                 onClick={handleSubmit}
                 disabled={!validateSubbmit()}
               >
-                Submit
+                Create account
               </button>
             )}
           </div>
         </form>
         <img src={dogSide} alt="dog" className={s.registration__picture} />
       </div>
+      <section className={s.benefits}>
+        <h2 className={s.benefitsTitle}>Benefits of registration</h2>
+        <ul className={s.benefitsList}>
+          <li className={s.benefitsListItem}>
+            keep track of your contributions and the projects you have
+            supported.
+          </li>
+          <li className={s.benefitsListItem}>
+            create your own projects to support pets in needs.
+          </li>
+          <li className={s.benefitsListItem}>
+            help animals, find a home, feed them, take care of them.
+          </li>
+        </ul>
+      </section>
     </div>
   )
 }
