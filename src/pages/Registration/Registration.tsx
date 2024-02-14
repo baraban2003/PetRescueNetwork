@@ -112,7 +112,8 @@ export const Registration = () => {
   const validateCurrentStep = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const isEmailValid = emailRegex.test(email)
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d|[^a-zA-Z0-9]).{8,}$/
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d!@#$%^&*()_+{}\[\]:;<>,.?\/\\~`|\-=]).{8,}$/
     const isPasswordValid = passwordRegex.test(password)
     return isEmailValid && isPasswordValid
   }
@@ -219,16 +220,6 @@ export const Registration = () => {
           )}
 
           <div className={s.buttonContainer}>
-            {currentStep > 1 && (
-              <button
-                className={classNames(s.button, s.button__back)}
-                type="button"
-                onClick={handleBack}
-              >
-                Back
-              </button>
-            )}
-
             {currentStep < TOTAL_STEPS ? (
               <button
                 className={classNames(s.button, s.button__continue)}
@@ -242,7 +233,6 @@ export const Registration = () => {
                 className={classNames(s.button, s.button__submit)}
                 type="button"
                 onClick={handleSubmit}
-                disabled={!validateSubbmit()}
               >
                 Create account
               </button>

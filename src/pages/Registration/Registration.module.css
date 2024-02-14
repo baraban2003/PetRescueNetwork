@@ -98,12 +98,8 @@
   background-color: var(--gray100);
 }
 
-.button__back {
-  margin-top: 16px;
-  margin-bottom: 25px;
-  border: 1px solid #000;
-  color: #000;
-  background-color: white;
+.button__submit {
+  margin-top: 90px;
 }
 
 .benefits {
