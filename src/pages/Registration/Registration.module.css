@@ -21,7 +21,7 @@
   width: 976px;
   height: 810.67px;
 
-  border: 1px solid var(--gray100);
+  border: 1px solid var(--Gray100);
   border-radius: 24px;
 
   background-color: var(--Gray0);
@@ -57,7 +57,7 @@
   font-size: 64px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--gray100);
+  color: var(--Gray100);
 }
 
 .registration__acc {
@@ -95,7 +95,7 @@
 }
 
 .button:hover {
-  background-color: var(--gray100);
+  background-color: var(--Gray100);
 }
 
 .button__submit {

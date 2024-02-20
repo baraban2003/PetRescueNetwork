@@ -3,7 +3,8 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { ApiResponse, Credentials, Login } from "../../services/types"
 
-axios.defaults.baseURL = "https://mate.academy/students-api"
+axios.defaults.baseURL =
+  "http://ec2-16-170-239-45.eu-north-1.compute.amazonaws.com"
 
 const token = {
   set(token: string) {
@@ -18,7 +19,7 @@ const register = createAsyncThunk(
   "auth/register",
   async (credentials: Credentials | null, thunkAPI) => {
     try {
-      const { data }: any = axios.post("/auth/register", credentials)
+      const { data }: any = axios.post("/api/auth/registration", credentials)
       token.set(data.token)
       toast.success("Register is success.")
 
@@ -35,7 +36,7 @@ const logIn = createAsyncThunk(
   "auth/login",
   async (credentials: Login, thunkAPI) => {
     try {
-      const { data } = await axios.post("/auth/login", credentials)
+      const { data } = await axios.post("/api/auth/login", credentials)
       token.set(data.token)
       toast.success("Authentification success!")
 
@@ -48,7 +49,7 @@ const logIn = createAsyncThunk(
   },
 )
 
-const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk("api/auth/logout", async (_, thunkAPI) => {
   try {
     await axios.get("/auth/logout")
     token.unset()
@@ -60,7 +61,7 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 })
 
 const fetchCurrentUser = createAsyncThunk(
-  "auth/refresh",
+  "api/auth/login",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState()
     const persistedToken = (state as { auth: { token: string } }).auth.token

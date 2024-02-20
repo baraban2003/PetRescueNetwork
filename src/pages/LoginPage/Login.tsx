@@ -10,6 +10,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi"
 import CloseIcon from "../../assets/icons/close.svg?react"
 import dogSide from "../../assets/images/dogSide.png"
 import classNames from "classnames"
+import { toast } from "react-toastify"
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +53,7 @@ export const Login = () => {
       if (result.status !== 404) {
         reset()
       } else {
-        console.error("Please fill the correct data")
+        toast.error("Please fill the correct data")
       }
     } catch (error) {
       console.error(error)
@@ -66,15 +67,16 @@ export const Login = () => {
     })
   }
 
+  const handleClose = () => {
+    dispatch(navigationVisibleAction.showNavigation())
+    sessionStorage.setItem("navigationVisible", "true")
+  }
+
   return (
     <div className={s.login}>
       <div className={s.login__block}>
         <div className={s.logoButtons}>
-          <Link
-            to="/"
-            className={s.logoButton}
-            onClick={() => dispatch(navigationVisibleAction.showNavigation())}
-          >
+          <Link to="/" className={s.logoButton} onClick={handleClose}>
             <CloseIcon />
           </Link>
         </div>

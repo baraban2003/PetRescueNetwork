@@ -1,6 +1,12 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  combineReducers,
+} from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import navigationVisibleReducer from "./navigationVisible/navigationVisibleSlice"
+import fluffiesReducer from "./fluffies/fluffiesSlice"
 import {
   persistStore,
   persistReducer,
@@ -13,6 +19,7 @@ import {
 } from "redux-persist"
 import authSlice from "./auth/authSlice"
 import storage from "redux-persist/lib/storage"
+import { User } from "../types/User"
 
 const authPersistConfig = {
   key: "auth",
@@ -20,20 +27,14 @@ const authPersistConfig = {
   whitelist: ["token"],
 }
 
-const navigationVisiblePersistConfig = {
-  key: "navigationVisible",
-  storage,
-  whitelist: ["navigationVisible"],
-}
+const reducers = combineReducers({
+  auth: persistReducer<User>(authPersistConfig, authSlice),
+  navigationVisible: navigationVisibleReducer,
+  getFluffies: fluffiesReducer,
+})
 
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authSlice),
-    navigationVisible: persistReducer(
-      navigationVisiblePersistConfig,
-      navigationVisibleReducer,
-    ),
-  },
+  reducer: reducers,
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -57,4 +58,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >
-/* eslint-enable @typescript-eslint/indent */

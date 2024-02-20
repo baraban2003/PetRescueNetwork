@@ -5,7 +5,8 @@ import { NotFoundPage } from "./pages/NotFoundPage"
 import { Registration } from "./pages/Registration/Registration"
 import { Login } from "./pages/LoginPage/"
 import { Suspense } from "react"
-import { Spinner } from "./pages/Spinner"
+import { Spinner } from "./components/Spinner"
+import { HelpForFluffiesPage } from "./pages/HelpForFluffiesPage"
 
 export const Root = () => (
   <Router>
@@ -13,7 +14,7 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="helpforfluffies">
-          <Route path=":fluffie?" element={<HomePage />} />
+          <Route path=":fluffie?" element={<HelpForFluffiesPage />} />
         </Route>
         <Route path="howtohelp" element={<Spinner />} />
         <Route path="yourkindhearts" element={<Spinner />} />

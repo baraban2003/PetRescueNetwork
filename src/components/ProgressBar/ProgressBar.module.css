@@ -1,0 +1,13 @@
+.containerStyles {
+  height: 8px;
+  width: 272px;
+  background-color: var(--Gray5);
+  border-radius: 40px;
+}
+
+.fillerStyles {
+  height: 100%;
+
+  background-color: var(--Secondary100);
+  border-radius: inherit;
+}

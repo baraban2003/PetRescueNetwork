@@ -1,0 +1,67 @@
+.form {
+  width: 864px;
+}
+
+.formInput {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 864px;
+  border: 1px solid var(--Gray70);
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 14px 24px 14px 56px;
+  margin-bottom: 27px;
+}
+
+.searchIcon {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  left: 10.5px;
+  top: 9px;
+}
+
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  height: 20px;
+  color: var(--Gray100);
+
+  font-family: Gambetta;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  font: inherit;
+  font-size: 18px;
+  color: var(--Gray70);
+}
+
+.filtersBlock {
+  display: flex;
+  width: 864px;
+  justify-content: space-between;
+}
+
+.inputLabel {
+  top: -6px;
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: var(--sand);
+  color: var(--Gray70);
+}
+.menuItem {
+  color: var(--Gray80);
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}

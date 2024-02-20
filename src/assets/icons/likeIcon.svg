@@ -1,0 +1,30 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_12409_2393)">
+<rect x="32" width="32" height="32" rx="16" transform="rotate(90 32 0)" fill="#FBFBFB"/>
+<g clip-path="url(#clip1_12409_2393)" filter="url(#filter0_b_12409_2393)">
+<g filter="url(#filter1_b_12409_2393)">
+<path d="M12.5711 9.71436C10.6779 9.71436 9.14258 11.2765 9.14258 13.2038C9.14258 14.7596 9.74258 18.452 15.6486 22.1846C15.7544 22.2508 15.8759 22.2858 15.9997 22.2858C16.1236 22.2858 16.245 22.2508 16.3508 22.1846C22.2569 18.452 22.8569 14.7596 22.8569 13.2038C22.8569 11.2765 21.3215 9.71436 19.4283 9.71436C17.535 9.71436 15.9997 11.8292 15.9997 11.8292C15.9997 11.8292 14.4644 9.71436 12.5711 9.71436Z" stroke="#FFD43B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_12409_2393" x="-92" y="-92" width="216" height="216" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="50"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_12409_2393"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_12409_2393" result="shape"/>
+</filter>
+<filter id="filter1_b_12409_2393" x="4.14258" y="4.71436" width="23.7148" height="22.5715" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_12409_2393"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_12409_2393" result="shape"/>
+</filter>
+<clipPath id="clip0_12409_2393">
+<rect x="32" width="32" height="32" rx="16" transform="rotate(90 32 0)" fill="white"/>
+</clipPath>
+<clipPath id="clip1_12409_2393">
+<rect width="16" height="16" fill="white" transform="translate(8 8)"/>
+</clipPath>
+</defs>
+</svg>

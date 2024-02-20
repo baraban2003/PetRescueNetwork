@@ -165,6 +165,11 @@ export const Registration = () => {
     })
   }
 
+  const handleClose = () => {
+    dispatch(navigationVisibleAction.showNavigation())
+    sessionStorage.setItem("navigationVisible", "true")
+  }
+
   return (
     <div className={s.registration}>
       <div className={s.registration__block}>
@@ -177,11 +182,7 @@ export const Registration = () => {
             <div></div>
           )}
 
-          <Link
-            to="/"
-            className={s.logoButton}
-            onClick={() => dispatch(navigationVisibleAction.showNavigation())}
-          >
+          <Link to="/" className={s.logoButton} onClick={handleClose}>
             <CloseIcon />
           </Link>
         </div>

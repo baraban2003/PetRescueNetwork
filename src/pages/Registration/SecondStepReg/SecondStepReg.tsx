@@ -73,7 +73,7 @@ export const SecondStepRef: React.FC<Props> = ({
               paddingLeft: "50px",
               borderWidth: 0,
               maxWidth: "95%",
-              color: "var(--gray100)",
+              color: "var(--Gray100)",
             }}
             buttonStyle={{
               height: 24,

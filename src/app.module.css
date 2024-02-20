@@ -83,7 +83,7 @@
 }
 
 .authButtonLogin {
-  border: 1px solid var(--gray100);
+  border: 1px solid var(--Gray100);
 }
 
 .authButtonLogin:hover {
@@ -93,7 +93,7 @@
 
 .authButtonRegister {
   color: var(--sand);
-  background-color: var(--gray100);
+  background-color: var(--Gray100);
 }
 
 .authButtonRegister:hover {

@@ -1,0 +1,134 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 304px;
+  height: 529px;
+  border: 1px solid var(--Gray100);
+  border-radius: 24px;
+
+  background-color: var(--Gray0);
+  overflow: hidden;
+}
+
+.likeIcon {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.likeIcon:hover {
+  scale: 1.1;
+}
+
+.cardImage {
+  height: 192px;
+  object-fit: fill;
+  margin-bottom: 32px;
+  cursor: pointer;
+}
+
+.cardText {
+  padding: 0px 16px 16px 16px;
+}
+
+.cardTitle {
+  cursor: pointer;
+  color: var(--Gray100);
+  font-family: General Sans;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+  margin-bottom: 8px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 58px;
+}
+
+.cardInfoBlock {
+  margin-bottom: 16px;
+  height: 21px;
+}
+
+.cardInfo {
+  cursor: pointer;
+  color: var(--Gray80);
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  max-height: 21px;
+  overflow: hidden;
+}
+
+.investTop {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+}
+
+.investBottom {
+  color: var(--Gray20);
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0 16px;
+}
+
+.buttons {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 272px;
+}
+
+.buttonAdopt {
+  height: 48px;
+  align-items: center;
+  padding: 8px 28px 8px 28px;
+  border: 1px solid var(--Gray100);
+  border-radius: 40px;
+  cursor: pointer;
+
+  font-family: General Sans;
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.buttonAdopt:hover {
+  border: 1px solid var(--Gray50);
+  color: var(--Gray50);
+}
+
+.buttonDonate {
+  height: 48px;
+  align-items: center;
+  padding: 8px 28px 8px 28px;
+  background-color: var(--Gray100);
+  border: 0px;
+  color: var(--Gray0);
+  border-radius: 40px;
+  cursor: pointer;
+
+  font-family: General Sans;
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.buttonDonate:hover {
+  background-color: var(--Gray50);
+}

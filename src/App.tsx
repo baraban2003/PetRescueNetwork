@@ -22,13 +22,23 @@ export function App() {
 
   const hideNavigation = () => {
     dispatch(navigationVisibleAction.hideNavigation())
+    sessionStorage.setItem("navigationVisible", "false")
   }
 
   const showNavigation = () => {
     dispatch(navigationVisibleAction.showNavigation())
+    sessionStorage.setItem("navigationVisible", "true")
   }
 
   useEffect(() => {
+    const persistedNavigationVisible =
+      sessionStorage.getItem("navigationVisible") === "true"
+    if (persistedNavigationVisible) {
+      dispatch(navigationVisibleAction.showNavigation())
+    } else {
+      dispatch(navigationVisibleAction.hideNavigation())
+    }
+
     const handlePopState = () => {
       dispatch(navigationVisibleAction.showNavigation())
     }

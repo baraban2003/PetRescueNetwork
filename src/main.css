@@ -4,18 +4,21 @@ body {
   --Secondary100: #ffd43b;
   --sand: #f7f5ee;
 
-  --gray100: #242629;
+  --Gray100: #242629;
   --Gray80: #3c3f44;
   --Gray70: #6c727a;
   --Gray50: #858b94;
   --Gray30: #a0a5ac;
+  --Gray20: #bbbfc4;
+  --Gray5: #f4f4f5;
   --Gray0: #ffffff;
 
   --Error100: #dd2d2a;
 
   --transition: all 0.3s ease-in-out;
 
-  font-family: "General Sans", "Gambetta", sans-serif;
+  font-family: "General Sans", sans-serif;
+  font-family: "Gambetta", serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,7 +27,7 @@ body {
   margin: 0 auto;
   padding: 40px 64px 81px;
   background-color: var(--sand);
-  color: var(--gray100);
+  color: var(--Gray100);
 }
 
 code {
