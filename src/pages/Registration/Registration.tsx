@@ -1,5 +1,6 @@
 import { useState } from "react"
 import authOperations from "../../redux/auth/authOperations"
+import { useNavigate } from "react-router-dom"
 import s from "../Registration/Registration.module.css"
 import { FirstStepRef } from "./FirstStepReg/FirstStepRef"
 import { SecondStepRef } from "./SecondStepReg/SecondStepReg"
@@ -23,14 +24,16 @@ export const Registration = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    name: "",
-    secondName: "",
+    firstName: "",
+    lastName: "",
     phone: "",
   })
 
+  const navigate = useNavigate()
+
   const dispatch = useAppDispatch()
 
-  const { email, password, name, secondName, phone } = formData
+  const { email, password, firstName, lastName, phone } = formData
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -124,7 +127,7 @@ export const Registration = () => {
 
   const validateSubmit = () => {
     const isSecondFormValid =
-      name.trim() !== "" && secondName.trim() !== "" && phone.trim() !== ""
+      firstName.trim() !== "" && lastName.trim() !== "" && phone.trim() !== ""
 
     return isSecondFormValid
   }
@@ -146,7 +149,9 @@ export const Registration = () => {
 
       if (result.status !== 404) {
         reset()
-        setCurrentStep(1)
+        navigate("/")
+        dispatch(navigationVisibleAction.showNavigation())
+        sessionStorage.setItem("navigationVisible", "true")
       } else {
         console.error("404 Error: Resource not found")
       }
@@ -159,8 +164,8 @@ export const Registration = () => {
     setFormData({
       email: "",
       password: "",
-      name: "",
-      secondName: "",
+      firstName: "",
+      lastName: "",
       phone: "",
     })
   }
@@ -212,8 +217,8 @@ export const Registration = () => {
           )}
           {currentStep === 2 && (
             <SecondStepRef
-              name={name}
-              secondName={secondName}
+              firstName={firstName}
+              lastName={lastName}
               phone={phone}
               handleChange={handleChange}
               handlePhoneChange={handlePhoneChange}

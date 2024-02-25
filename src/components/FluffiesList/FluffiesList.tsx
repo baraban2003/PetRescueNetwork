@@ -10,7 +10,7 @@ export const FluffiesList = () => {
   const dispatch = useAppDispatch()
   const { isLoading, items } = useAppSelector((state) => state.getFluffies)
 
-  const [page, setPage] = useState<number>(1)
+  const [page, setPage] = useState<number>(0)
   const loaderRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = () => {

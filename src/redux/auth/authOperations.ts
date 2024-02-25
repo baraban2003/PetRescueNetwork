@@ -1,7 +1,7 @@
-import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit"
+import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { ApiResponse, Credentials, Login } from "../../services/types"
+import { Credentials, Login } from "../../services/types"
 
 axios.defaults.baseURL =
   "http://ec2-16-170-239-45.eu-north-1.compute.amazonaws.com"
@@ -17,16 +17,15 @@ const token = {
 
 const register = createAsyncThunk(
   "auth/register",
-  async (credentials: Credentials | null, thunkAPI) => {
+  async (credentials: Credentials, thunkAPI) => {
     try {
-      const { data }: any = axios.post("/api/auth/registration", credentials)
-      token.set(data.token)
-      toast.success("Register is success.")
-
-      return data
+      const { data } = await axios.post("/api/auth/registration", credentials)
+      // toast.success("Registration successful. Logging in...")
+      const loginAction = await thunkAPI.dispatch(logIn(credentials))
+      const loginResult = unwrapResult(loginAction)
+      return { ...data, ...loginResult }
     } catch (error) {
-      toast.error("404 Error: Server not found")
-
+      toast.error("Error: Registration failed")
       return thunkAPI.rejectWithValue(error)
     }
   },
@@ -35,10 +34,11 @@ const register = createAsyncThunk(
 const logIn = createAsyncThunk(
   "auth/login",
   async (credentials: Login, thunkAPI) => {
+    const { email, password } = credentials
     try {
-      const { data } = await axios.post("/api/auth/login", credentials)
+      const { data } = await axios.post("/api/auth/login", { email, password })
       token.set(data.token)
-      toast.success("Authentification success!")
+      // toast.success("Authentification successful!");
 
       return data
     } catch (error) {
@@ -49,19 +49,18 @@ const logIn = createAsyncThunk(
   },
 )
 
-const logOut = createAsyncThunk("api/auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.get("/auth/logout")
     token.unset()
-    toast.success("Goodbye to the next session!")
+    // toast.success("Goodbye to the next session!");
   } catch (error) {
-    toast.success("Error. Try again!")
+    toast.error("Error. Try again!")
     return thunkAPI.rejectWithValue(error)
   }
 })
 
 const fetchCurrentUser = createAsyncThunk(
-  "api/auth/login",
+  "api/auth/info",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState()
     const persistedToken = (state as { auth: { token: string } }).auth.token
@@ -71,7 +70,7 @@ const fetchCurrentUser = createAsyncThunk(
     }
     token.set(persistedToken)
     try {
-      const { data } = await axios.get("/user")
+      const { data } = await axios.get("/api/auth/info")
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error)

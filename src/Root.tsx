@@ -22,9 +22,7 @@ export const Root = () => (
           path="register"
           element={
             <Suspense fallback={<Spinner />}>
-              {/* <PublicRoute restricted> */}
               <Registration />
-              {/* </PublicRoute> */}
             </Suspense>
           }
         />
@@ -32,10 +30,7 @@ export const Root = () => (
           path="login"
           element={
             <Suspense fallback={<Spinner />}>
-              {/* <PublicRoute restricted> */}
               <Login />
-
-              {/* </PublicRoute> */}
             </Suspense>
           }
         />

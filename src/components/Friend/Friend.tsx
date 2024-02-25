@@ -3,10 +3,12 @@ import LikeIcon from "../../assets/icons/likeIcon.svg?react"
 
 import s from "./Friend.module.css"
 import { ProgressBar } from "../ProgressBar"
+import { ButtonWhite } from "../Buttons/ButtonWhite"
+import { ButtonBlack } from "../Buttons/ButtonBlack"
 
 type Props = {
   friend: {
-    img: string
+    img: string | undefined
     title: string
     sex?: string
     age?: string
@@ -37,6 +39,14 @@ export const Friend: React.FC<Props> = ({ friend }) => {
     else {
       return ""
     }
+  }
+
+  const handleAdoptClick = () => {
+    // Handle click for profile button
+  }
+
+  const handleDonateClick = () => {
+    // Handle click for profile button
   }
 
   // const toggleModal = () => {
@@ -83,8 +93,8 @@ export const Friend: React.FC<Props> = ({ friend }) => {
         </div>
 
         <div className={s.buttons}>
-          <button className={s.buttonAdopt}>Adopt</button>
-          <button className={s.buttonDonate}>Donate</button>
+          <ButtonWhite buttonWhiteName={"Adopt"} onClick={handleAdoptClick} />
+          <ButtonBlack buttonBlackName={"Donate"} onClick={handleDonateClick} />
         </div>
       </div>
 

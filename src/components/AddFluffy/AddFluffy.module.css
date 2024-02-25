@@ -1,0 +1,24 @@
+.authButton {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  border: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 248px;
+  height: 40px;
+
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.authButtonRegister {
+  color: var(--sand);
+  background-color: var(--Gray100);
+}
+
+.authButtonRegister:hover {
+  background-color: var(--Primary100);
+}

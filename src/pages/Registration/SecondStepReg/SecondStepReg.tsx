@@ -5,8 +5,8 @@ import PhoneInput from "react-phone-input-2"
 import "react-phone-input-2/lib/style.css"
 
 type Props = {
-  name: string
-  secondName: string
+  firstName: string
+  lastName: string
   phone: string
   handleChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -15,8 +15,8 @@ type Props = {
 }
 
 export const SecondStepRef: React.FC<Props> = ({
-  name,
-  secondName,
+  firstName,
+  lastName,
   phone,
   handleChange,
   handlePhoneChange,
@@ -30,8 +30,8 @@ export const SecondStepRef: React.FC<Props> = ({
           <Form.Control
             className={s.input}
             type="text"
-            name="name"
-            value={name}
+            name="firstName"
+            value={firstName}
             onChange={handleChange}
             placeholder="Enter your first name"
             required
@@ -44,8 +44,8 @@ export const SecondStepRef: React.FC<Props> = ({
           <Form.Control
             className={s.input}
             type="text"
-            name="secondName"
-            value={secondName}
+            name="lastName"
+            value={lastName}
             onChange={handleChange}
             placeholder="Enter your second name"
             required

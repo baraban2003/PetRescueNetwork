@@ -393,3 +393,7 @@ template {
 [hidden] {
   display: none;
 }
+
+.modalOpen {
+  overflow: hidden;
+}

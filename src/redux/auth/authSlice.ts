@@ -2,17 +2,23 @@ import { createSlice } from "@reduxjs/toolkit"
 import authOperations from "./authOperations"
 import { User } from "../../types/User"
 
+const storedAuthString = localStorage.getItem("persist:auth")
+const storedAuth = storedAuthString ? JSON.parse(storedAuthString) : null
+
+const storedToken =
+  storedAuth && storedAuth.token !== "null" ? storedAuth.token : null
+
 export const initialState: User = {
   user: {
     email: null,
     password: null,
     firstName: null,
-    secondName: null,
+    lastName: null,
     phone: null,
     location: null,
   },
-  token: null,
-  isLoggedIn: false,
+  token: storedToken || null,
+  isLoggedIn: !!storedToken,
   isRefreshing: false,
 }
 
@@ -28,20 +34,19 @@ const authSlice = createSlice({
     builder.addCase(
       authOperations.fetchCurrentUser.fulfilled,
       (state, action) => {
-        state.user = action.payload.user
+        state.user = action.payload
         state.isLoggedIn = true
         state.isRefreshing = false
       },
     )
 
     builder.addCase(authOperations.register.fulfilled, (state, action) => {
-      state.user = action.payload.user
-      state.token = action.payload.token
+      state.user = action.payload
       state.isLoggedIn = true
     })
 
     builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
-      state.user = action.payload.user
+      state.user = action.payload
       state.token = action.payload.token
       state.isLoggedIn = true
     })
@@ -51,7 +56,7 @@ const authSlice = createSlice({
         email: null,
         password: null,
         firstName: null,
-        secondName: null,
+        lastName: null,
         phone: null,
         location: null,
       }
@@ -67,13 +72,13 @@ const authSlice = createSlice({
         email: null,
         password: null,
         firstName: null,
-        secondName: null,
+        lastName: null,
         phone: null,
         location: null,
       }
       state.token = null
       state.isLoggedIn = false
-      state.error = "Unautorized"
+      state.error = "Unauthorized"
     })
   },
 })

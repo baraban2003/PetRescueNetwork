@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import authOperations from "../../redux/auth/authOperations"
+import { useNavigate } from "react-router-dom"
 import s from "./Login.module.css"
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
@@ -26,6 +27,7 @@ export const Login = () => {
   const { email, password } = formData
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const isButtonActive = () => {
     let result = email.trim() !== "" && password.trim() !== ""
@@ -52,6 +54,9 @@ export const Login = () => {
 
       if (result.status !== 404) {
         reset()
+        navigate("/")
+        dispatch(navigationVisibleAction.showNavigation())
+        sessionStorage.setItem("navigationVisible", "true")
       } else {
         toast.error("Please fill the correct data")
       }
@@ -128,7 +133,7 @@ export const Login = () => {
             disabled={!isButtonActive()}
             className={s.button}
           >
-            Submit
+            Continue
           </button>
         </form>
         <img src={dogSide} alt="dog" className={s.login__picture} />

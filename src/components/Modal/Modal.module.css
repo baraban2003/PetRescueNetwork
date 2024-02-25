@@ -1,0 +1,52 @@
+.modal {
+  background-color: var(--Gray0);
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  padding: 32px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(160, 165, 172, 0.2);
+  z-index: 999;
+  pointer-events: auto;
+}
+
+.modalOverlayNone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: transparent;
+}
+
+.avatarModal {
+  width: 416px;
+  height: 347px;
+  padding: 32px;
+  position: absolute;
+  top: 92px;
+  left: calc(50% + 240px);
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+  box-sizing: border-box;
+
+  border: 1px solid var(--Gray100);
+  border-radius: 24px;
+
+  background-color: var(--Gray0);
+}

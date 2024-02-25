@@ -24,7 +24,7 @@ import { User } from "../types/User"
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "user"],
 }
 
 const reducers = combineReducers({

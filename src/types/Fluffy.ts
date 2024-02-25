@@ -1,6 +1,7 @@
 export interface FluffyShort {
   id: number
-  imageUrl: string
+  petImageId: number
+  imageUrl?: string
   title: string
   sex?: string
   age?: string

@@ -95,8 +95,8 @@ export const Filters = () => {
               className={s.inputLabel}
               sx={{
                 "&.MuiFormLabel-filled, &.Mui-focused": {
-                  color: "var(--Gray70)",
-                  backgroundColor: "var(--sand)",
+                  color: "var(--Primary100)",
+                  bgcolor: "var(--sand)",
                   top: 0,
                 },
               }}
@@ -110,10 +110,9 @@ export const Filters = () => {
                 PaperProps: {
                   sx: {
                     marginTop: "8px",
-                    bgcolor: "pink",
                     border: "1px solid var(--Gray80)",
                     borderRadius: "20px",
-                    background: "var(--Gray0)",
+                    bgcolor: "var(--Gray0)",
                   },
                 },
               }}
@@ -124,9 +123,7 @@ export const Filters = () => {
                 borderRadius: 30,
                 border: "1px solid var(--Gray70)",
                 "& fieldset": { border: "none" },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--Gray70)",
-                },
+                overflow: "hidden",
                 "&.MuiInputBase-root": {
                   color: "var(--Gray100)",
                   fontFamily: "Gambetta",
@@ -134,7 +131,6 @@ export const Filters = () => {
                   fontWeight: 400,
                   lineHeight: 1.5,
                 },
-                overflow: "hidden",
               }}
               name="purpose"
               labelId="purpose"
@@ -166,7 +162,7 @@ export const Filters = () => {
               className={s.inputLabel}
               sx={{
                 "&.MuiFormLabel-filled, &.Mui-focused": {
-                  color: "var(--Gray70)",
+                  color: "var(--Primary100)",
                   backgroundColor: "var(--sand)",
                   top: 0,
                 },
@@ -181,10 +177,9 @@ export const Filters = () => {
                 PaperProps: {
                   sx: {
                     marginTop: "8px",
-                    bgcolor: "pink",
                     border: "1px solid var(--Gray80)",
                     borderRadius: "20px",
-                    background: "var(--Gray0)",
+                    bgcolor: "var(--Gray0)",
                   },
                 },
               }}
@@ -195,9 +190,7 @@ export const Filters = () => {
                 borderRadius: 30,
                 border: "1px solid var(--Gray70)",
                 "& fieldset": { border: "none" },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--Gray70)",
-                },
+                overflow: "hidden",
                 "&.MuiInputBase-root": {
                   color: "var(--Gray100)",
                   fontFamily: "Gambetta",
@@ -205,7 +198,6 @@ export const Filters = () => {
                   fontWeight: 400,
                   lineHeight: 1.5,
                 },
-                overflow: "hidden",
               }}
               name="health"
               labelId="Health condition"
@@ -231,8 +223,8 @@ export const Filters = () => {
               className={s.inputLabel}
               sx={{
                 "&.MuiFormLabel-filled, &.Mui-focused": {
-                  color: "var(--Gray70)",
-                  backgroundColor: "var(--sand)",
+                  color: "var(--Primary100)",
+                  bgcolor: "var(--sand)",
                   top: 0,
                 },
               }}
@@ -246,10 +238,9 @@ export const Filters = () => {
                 PaperProps: {
                   sx: {
                     marginTop: "8px",
-                    bgcolor: "pink",
                     border: "1px solid var(--Gray80)",
                     borderRadius: "20px",
-                    background: "var(--Gray0)",
+                    bgcolor: "var(--Gray0)",
                   },
                 },
               }}
@@ -260,9 +251,6 @@ export const Filters = () => {
                 borderRadius: 30,
                 border: "1px solid var(--Gray70)",
                 "& fieldset": { border: "none" },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--Gray70)",
-                },
                 "&.MuiInputBase-root": {
                   color: "var(--Gray100)",
                   fontFamily: "Gambetta",
@@ -305,8 +293,8 @@ export const Filters = () => {
               className={s.inputLabel}
               sx={{
                 "&.MuiFormLabel-filled, &.Mui-focused": {
-                  color: "var(--Gray70)",
-                  backgroundColor: "var(--sand)",
+                  color: "var(--Primary100)",
+                  bgcolor: "var(--sand)",
                   top: 0,
                 },
               }}
@@ -321,10 +309,9 @@ export const Filters = () => {
                   sx: {
                     maxHeight: "169px",
                     marginTop: "8px",
-                    bgcolor: "pink",
                     border: "1px solid var(--Gray80)",
                     borderRadius: "20px",
-                    background: "var(--Gray0)",
+                    bgcolor: "var(--Gray0)",
                   },
                 },
               }}
@@ -335,9 +322,6 @@ export const Filters = () => {
                 borderRadius: 30,
                 border: "1px solid var(--Gray70)",
                 "& fieldset": { border: "none" },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--Gray70)",
-                },
                 "&.MuiInputBase-root": {
                   color: "var(--Gray100)",
                   fontFamily: "Gambetta",
@@ -458,8 +442,8 @@ export const Filters = () => {
               className={s.inputLabel}
               sx={{
                 "&.MuiFormLabel-filled, &.Mui-focused": {
-                  color: "var(--Gray70)",
-                  backgroundColor: "var(--sand)",
+                  color: "var(--Primary100)",
+                  bgcolor: "var(--sand)",
                   top: 0,
                 },
               }}
@@ -473,10 +457,9 @@ export const Filters = () => {
                 PaperProps: {
                   sx: {
                     marginTop: "8px",
-                    bgcolor: "pink",
                     border: "1px solid var(--Gray80)",
                     borderRadius: "20px",
-                    background: "var(--Gray0)",
+                    bgcolor: "var(--Gray0)",
                   },
                 },
               }}
@@ -487,9 +470,6 @@ export const Filters = () => {
                 borderRadius: 30,
                 border: "1px solid var(--Gray70)",
                 "& fieldset": { border: "none" },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--Gray70)",
-                },
                 "&.MuiInputBase-root": {
                   color: "var(--Gray100)",
                   fontFamily: "Gambetta",

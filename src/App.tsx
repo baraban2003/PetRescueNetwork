@@ -4,9 +4,12 @@ import s from "./App.module.css"
 import Logo from "./assets/icons/logo.svg?react"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "./services/hooks"
 import * as navigationVisibleAction from "./redux/navigationVisible/navigationVisibleSlice"
+import { AddFluffy } from "./components/AddFluffy"
+import AvatarIcon from "./components/AvatarIcon/AvatarIcon"
+import authOperations from "./redux/auth/authOperations"
 
 const getActiveLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(s.navbar, {
@@ -20,6 +23,8 @@ export function App() {
     (state) => state.navigationVisible.navigationVisible,
   )
 
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
+
   const hideNavigation = () => {
     dispatch(navigationVisibleAction.hideNavigation())
     sessionStorage.setItem("navigationVisible", "false")
@@ -31,9 +36,17 @@ export function App() {
   }
 
   useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser())
+  }, [isLoggedIn])
+
+  useEffect(() => {
     const persistedNavigationVisible =
-      sessionStorage.getItem("navigationVisible") === "true"
-    if (persistedNavigationVisible) {
+      sessionStorage.getItem("navigationVisible")
+    if (
+      persistedNavigationVisible === "true" ||
+      persistedNavigationVisible === null ||
+      persistedNavigationVisible === undefined
+    ) {
       dispatch(navigationVisibleAction.showNavigation())
     } else {
       dispatch(navigationVisibleAction.hideNavigation())
@@ -94,23 +107,30 @@ export function App() {
               </NavLink>
             </div>
 
-            <div className={s.auth}>
-              <NavLink
-                to="/login"
-                className={classNames(s.authButton, s.authButtonLogin)}
-                onClick={hideNavigation}
-              >
-                Log In
-              </NavLink>
+            {isLoggedIn ? (
+              <div className={s.auth}>
+                <AddFluffy />
+                <AvatarIcon />
+              </div>
+            ) : (
+              <div className={s.auth}>
+                <NavLink
+                  to="/login"
+                  className={classNames(s.authButton, s.authButtonLogin)}
+                  onClick={hideNavigation}
+                >
+                  Log In
+                </NavLink>
 
-              <NavLink
-                to="/register"
-                className={classNames(s.authButton, s.authButtonRegister)}
-                onClick={hideNavigation}
-              >
-                Sign Up
-              </NavLink>
-            </div>
+                <NavLink
+                  to="/register"
+                  className={classNames(s.authButton, s.authButtonRegister)}
+                  onClick={hideNavigation}
+                >
+                  Sign Up
+                </NavLink>
+              </div>
+            )}
           </div>
         )}
       </header>
