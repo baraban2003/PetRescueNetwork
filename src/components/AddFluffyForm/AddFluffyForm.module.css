@@ -1,0 +1,44 @@
+.addFluffy {
+  display: flex;
+}
+
+.addFluffy__block {
+  box-sizing: border-box;
+  width: 864px;
+  padding: 32px;
+  border: 1px solid var(--Gray100);
+  border-radius: 24px;
+  background-color: var(--Gray0);
+}
+
+.logoButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.logoButton {
+  cursor: pointer;
+}
+
+.addFluffy__step {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--Gray70);
+  margin-bottom: 8px;
+}
+
+.addFluffy__title {
+  font-family: "General Sans", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  margin-bottom: 48px;
+  color: var(--Gray100);
+}
+
+select {
+  max-height: 200px;
+  overflow-y: auto;
+}

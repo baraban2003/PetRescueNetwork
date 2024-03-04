@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 import fluffies from "./fluffiesOperations"
-import { FluffyShort } from "../../types/Fluffy"
+import { Fluffy } from "../../types/Fluffy"
 
 type Fluffies = {
-  items: FluffyShort[]
+  items: Fluffy[]
   isLoading: boolean
   error: any
 }
@@ -19,20 +19,34 @@ const fluffiesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fluffies.pending, (state) => {
-      state.isLoading = true
-      state.error = null
-      state.items = []
-    })
-    builder.addCase(fluffies.fulfilled, (state, action) => {
-      state.items = action.payload
-      state.isLoading = false
-      state.error = null
-    })
-    builder.addCase(fluffies.rejected, (state, action) => {
-      state.isLoading = false
-      state.error = action.payload
-    })
+    builder
+      .addCase(fluffies.fetchFluffies.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+        state.items = []
+      })
+      .addCase(fluffies.fetchFluffies.fulfilled, (state, action) => {
+        state.items = action.payload
+        state.isLoading = false
+        state.error = null
+      })
+      .addCase(fluffies.fetchFluffies.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
+      .addCase(fluffies.addFluffy.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fluffies.addFluffy.fulfilled, (state, action) => {
+        state.items.push(action.payload)
+        state.isLoading = false
+        state.error = null
+      })
+      .addCase(fluffies.addFluffy.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
   },
 })
 

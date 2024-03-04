@@ -2,6 +2,7 @@ import { useState } from "react"
 import classNames from "classnames"
 import s from "./AddFluffy.module.css"
 import { Modal } from "../Modal"
+import { AddFluffyForm } from "../AddFluffyForm"
 
 export const AddFluffy = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -27,12 +28,7 @@ export const AddFluffy = () => {
           isOverlay={true}
           isAvatarModal={false}
         >
-          <p>
-            Blabalabla Blabalabla Blabalabla Blabalabla BlabalablaBlabalabla
-            Blabalabla Blabalabla Blabalabla BlabalablaBlabalabla Blabalabla
-            Blabalabla Blabalabla BlabalablaBlabalabla Blabalabla Blabalabla
-            Blabalabla Blabalabla
-          </p>
+          <AddFluffyForm setModalOpen={setModalOpen} />
         </Modal>
       )}
     </div>

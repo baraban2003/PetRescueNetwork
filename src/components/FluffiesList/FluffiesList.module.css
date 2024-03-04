@@ -6,3 +6,8 @@
   padding: 0;
   gap: 32px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}

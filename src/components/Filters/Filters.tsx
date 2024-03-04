@@ -3,13 +3,11 @@ import { debounce } from "lodash"
 import s from "./Filters.module.css"
 import SearchIcon from "../../assets/icons/icon-search.svg?react"
 import {
-  Autocomplete,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
-  TextField,
 } from "@mui/material"
 import { toast } from "react-toastify"
 
@@ -39,7 +37,6 @@ export const Filters = () => {
     const { value } = event.currentTarget
     setFluffy(value)
 
-    // Call the memoized debounced search function with the current value
     handleSearchRequest(value)
   }
 
@@ -205,11 +202,14 @@ export const Filters = () => {
               value={health}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"Critical"} className={s.menuItem}>
+              <MenuItem value={"critical"} className={s.menuItem}>
                 Critical
               </MenuItem>
-              <MenuItem value={"Need help"} className={s.menuItem}>
+              <MenuItem value={"needHelp"} className={s.menuItem}>
                 Need help
+              </MenuItem>
+              <MenuItem value={"normal"} className={s.menuItem}>
+                Normal
               </MenuItem>
               <MenuItem value={""} className={s.menuItem}>
                 Clear
@@ -266,19 +266,16 @@ export const Filters = () => {
               value={animalType}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"Cat"} className={s.menuItem}>
+              <MenuItem value={"cat"} className={s.menuItem}>
                 Cat
               </MenuItem>
-              <MenuItem value={"Dog"} className={s.menuItem}>
+              <MenuItem value={"dog"} className={s.menuItem}>
                 Dog
               </MenuItem>
-              <MenuItem value={"Cat and Dog"} className={s.menuItem}>
-                Cat and Dog
-              </MenuItem>
-              <MenuItem value={"Domestic animals"} className={s.menuItem}>
+              <MenuItem value={"domestic"} className={s.menuItem}>
                 Domestic animals
               </MenuItem>
-              <MenuItem value={"Other animals"} className={s.menuItem}>
+              <MenuItem value={"other"} className={s.menuItem}>
                 Other animals
               </MenuItem>
               <MenuItem value={""} className={s.menuItem}>
@@ -337,96 +334,87 @@ export const Filters = () => {
               value={animalLocation}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"Chekasy"} className={s.menuItem}>
+              <MenuItem value={"chekasy"} className={s.menuItem}>
                 Chekasy
               </MenuItem>
-              <MenuItem value={"Chernihiv"} className={s.menuItem}>
+              <MenuItem value={"chernihiv"} className={s.menuItem}>
                 Chernihiv
               </MenuItem>
-              <MenuItem value={"Chernivtsi"} className={s.menuItem}>
+              <MenuItem value={"chernivtsi"} className={s.menuItem}>
                 Chernivtsi
               </MenuItem>
-              <MenuItem value={"Dnipropetrovsk"} className={s.menuItem}>
+              <MenuItem value={"dnipropetrovsk"} className={s.menuItem}>
                 Dnipropetrovsk
               </MenuItem>
-              <MenuItem value={"Donetsk"} className={s.menuItem}>
+              <MenuItem value={"donetsk"} className={s.menuItem}>
                 Donetsk
               </MenuItem>
 
-              <MenuItem value={"Ivano-Frankivsk"} className={s.menuItem}>
-                Ivano-Frankivsk{" "}
+              <MenuItem value={"ivanoFrankivsk"} className={s.menuItem}>
+                Ivano-Frankivsk
               </MenuItem>
-              <MenuItem value={"Kharkiv"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"kharkiv"} className={s.menuItem}>
                 Kharkiv
               </MenuItem>
-              <MenuItem value={"Kherson"} className={s.menuItem}>
-                Kherson{" "}
+              <MenuItem value={"kherson"} className={s.menuItem}>
+                Kherson
               </MenuItem>
-              <MenuItem value={"Khmelnytskyi"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"khmelnytskyi"} className={s.menuItem}>
                 Khmelnytskyi
               </MenuItem>
-              <MenuItem value={"Kyiv"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"kyiv"} className={s.menuItem}>
+                Kyiv
               </MenuItem>
 
-              <MenuItem value={"Kirovohrad"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"kirovohrad"} className={s.menuItem}>
                 Kirovohrad
               </MenuItem>
-              <MenuItem value={"Luhansk"} className={s.menuItem}>
-                Luhansk{" "}
+              <MenuItem value={"luhansk"} className={s.menuItem}>
+                Luhansk
               </MenuItem>
-              <MenuItem value={"Lviv"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"lviv"} className={s.menuItem}>
                 Lviv
               </MenuItem>
-              <MenuItem value={"Mykolaiv"} className={s.menuItem}>
-                Mykolaiv{" "}
+              <MenuItem value={"mykolaiv"} className={s.menuItem}>
+                Mykolaiv
               </MenuItem>
-              <MenuItem value={"Odessa"} className={s.menuItem}>
-                Odessa{" "}
+              <MenuItem value={"odessa"} className={s.menuItem}>
+                Odessa
               </MenuItem>
 
-              <MenuItem value={"Poltava"} className={s.menuItem}>
+              <MenuItem value={"poltava"} className={s.menuItem}>
                 Poltava
               </MenuItem>
-              <MenuItem value={"Rivne"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"rivne"} className={s.menuItem}>
                 Rivne
               </MenuItem>
-              <MenuItem value={"Sumy"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"sumy"} className={s.menuItem}>
                 Sumy
               </MenuItem>
-              <MenuItem value={"Ternopil "} className={s.menuItem}>
-                Ternopil{" "}
+              <MenuItem value={"ternopil"} className={s.menuItem}>
+                Ternopil
               </MenuItem>
-              <MenuItem value={"Vinnytsia"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"vinnytsia"} className={s.menuItem}>
                 Vinnytsia
               </MenuItem>
 
-              <MenuItem value={"Volyn"} className={s.menuItem}>
-                Volyn{" "}
+              <MenuItem value={"volyn"} className={s.menuItem}>
+                Volyn
               </MenuItem>
-              <MenuItem value={"Zakarpattia"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"zakarpattia"} className={s.menuItem}>
                 Zakarpattia
               </MenuItem>
-              <MenuItem value={"Zaporizhia"} className={s.menuItem}>
-                {" "}
+              <MenuItem value={"zaporizhia"} className={s.menuItem}>
                 Zaporizhia
               </MenuItem>
-              <MenuItem value={"Zhytomyr"} className={s.menuItem}>
-                Zhytomyr{" "}
+              <MenuItem value={"zhytomyr"} className={s.menuItem}>
+                Zhytomyr
               </MenuItem>
-              <MenuItem value={"Crimea"} className={s.menuItem}>
+              <MenuItem value={"crimea"} className={s.menuItem}>
                 Crimea
               </MenuItem>
 
-              <MenuItem value={"Other"} className={s.menuItem}>
+              <MenuItem value={"other"} className={s.menuItem}>
                 Other
               </MenuItem>
 
@@ -485,13 +473,13 @@ export const Filters = () => {
               value={habitat}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"In good hands"} className={s.menuItem}>
+              <MenuItem value={"goodHands"} className={s.menuItem}>
                 In good hands
               </MenuItem>
-              <MenuItem value={"In a shelter"} className={s.menuItem}>
+              <MenuItem value={"shelter"} className={s.menuItem}>
                 In a shelter
               </MenuItem>
-              <MenuItem value={"Stray"} className={s.menuItem}>
+              <MenuItem value={"stray"} className={s.menuItem}>
                 Stray
               </MenuItem>
               <MenuItem value={""} className={s.menuItem}>

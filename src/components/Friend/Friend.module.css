@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 304px;
-  height: 529px;
+  height: 533px;
   border: 1px solid var(--Gray100);
   border-radius: 24px;
 
@@ -13,8 +13,8 @@
 
 .likeIcon {
   position: absolute;
-  top: 12px;
-  right: 13px;
+  top: 16px;
+  right: 16px;
 
   width: 32px;
   height: 32px;
@@ -27,17 +27,23 @@
 }
 
 .cardImage {
-  height: 192px;
+  width: 180px;
+  height: 180px;
   object-fit: fill;
-  margin-bottom: 32px;
+  margin: 16px auto;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .cardText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0px 16px 16px 16px;
 }
 
 .cardTitle {
+  height: 58px;
   cursor: pointer;
   color: var(--Gray100);
   font-family: General Sans;
@@ -83,7 +89,7 @@
   color: var(--Gray20);
   display: flex;
   justify-content: space-between;
-  margin: 4px 0 16px;
+  margin: 4px 0 32px;
 }
 
 .buttons {

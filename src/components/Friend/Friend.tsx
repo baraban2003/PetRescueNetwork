@@ -14,12 +14,14 @@ type Props = {
     age?: string
     maxPriceForHelp: number
     intAccumulated: number
+    comment?: string
   }
 }
 
 export const Friend: React.FC<Props> = ({ friend }) => {
   // const [showModal, setShowModal] = useState(false);
-  const { img, title, sex, age, maxPriceForHelp, intAccumulated } = friend
+  const { img, title, sex, age, maxPriceForHelp, intAccumulated, comment } =
+    friend
 
   const formattedNumber = (num: number) => {
     const formatting = num.toLocaleString("en-US", {
@@ -62,7 +64,9 @@ export const Friend: React.FC<Props> = ({ friend }) => {
       </div>
 
       <div className={s.cardText}>
-        <h3 className={s.cardTitle}>{title}</h3>
+        <h3 className={s.cardTitle}>
+          {title} {comment}
+        </h3>
 
         <div className={s.cardInfoBlock}>
           {isShowAgeSex() && (
