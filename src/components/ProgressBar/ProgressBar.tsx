@@ -12,9 +12,14 @@ export const ProgressBar: React.FC<Props> = ({
 }) => {
   const completed = Math.round((intAccumulated * 100) / maxPriceForHelp)
 
+  const correctLine = maxPriceForHelp >= intAccumulated ? completed : 100
+
   return (
     <div className={s.containerStyles}>
-      <div className={s.fillerStyles} style={{ width: `${completed}%` }}></div>
+      <div
+        className={s.fillerStyles}
+        style={{ width: `${correctLine}%` }}
+      ></div>
     </div>
   )
 }

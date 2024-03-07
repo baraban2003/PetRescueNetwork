@@ -12,6 +12,7 @@ import addFluffyOperations, {
   fetchFluffies,
 } from "../../redux/fluffies/fluffiesOperations"
 import { fileToByteArray } from "../../services/helpers"
+import { ButtonBlack } from "../Buttons/ButtonBlack"
 
 interface AddFluffyFormProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -118,11 +119,12 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
         <h2 className={s.addFluffy__title}>Add fluffy in need</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           {currentStep === 1 && (
-            <div>
-              <div>
-                <label>
-                  Nickname
+            <div className={s.formStep}>
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Nickname</span>
                   <input
+                    className={s.formInput}
                     {...register("name", {
                       required: "Please add the Nickname",
                       minLength: {
@@ -132,9 +134,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     })}
                   />
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.name && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.name?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -142,10 +144,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Animal type
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Animal type</span>
                   <select
+                    className={s.formInput}
                     {...register("type", {
                       required: "Please choose the animal type",
                     })}
@@ -156,9 +159,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="other">Other animals</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.type && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.type?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -166,18 +169,19 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Age
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Age</span>
                   <input
+                    className={s.formInput}
                     {...register("age", {
                       required: "Please add the approximate age",
                     })}
                   />
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.age && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.age?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -185,10 +189,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Sex
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Sex</span>
                   <select
+                    className={s.formInput}
                     {...register("sex", {
                       required: "Please choose the animal sex",
                     })}
@@ -198,9 +203,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="girl">Girl</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.sex && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.sex?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -208,10 +213,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Health condition
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Health condition</span>
                   <select
+                    className={s.formInput}
                     {...register("healthCondition", {
                       required: "Please choose the animal health condition",
                     })}
@@ -220,9 +226,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="critical">Critical</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.healthCondition && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.healthCondition?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -233,11 +239,12 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
           )}
 
           {currentStep === 2 && (
-            <div>
-              <div>
-                <label>
-                  Sterilization
+            <div className={s.formStep}>
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Sterilization</span>
                   <select
+                    className={s.formInput}
                     {...register("sterilization", {
                       required: "Please choose is animal sterilized",
                     })}
@@ -246,9 +253,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="yes">Yes</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.sterilization && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.sterilization?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -256,10 +263,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Size
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Size</span>
                   <select
+                    className={s.formInput}
                     {...register("size", {
                       required: "Please choose the animal size",
                     })}
@@ -269,9 +277,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="big">Big</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.size && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.size?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -279,14 +287,14 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Location
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Location</span>
                   <select
+                    className={s.formInput}
                     {...register("location", {
                       required: "Please choose the animal size",
                     })}
-                    className={s.select}
                   >
                     <option value={"other"} className={s.menuItem}>
                       Other
@@ -368,9 +376,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     </option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.location && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.location?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -378,10 +386,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Habitat
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Habitat</span>
                   <select
+                    className={s.formInput}
                     {...register("habitat", {
                       required: "Please choose the animal size",
                     })}
@@ -391,9 +400,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     <option value="shelter">In shelter</option>
                   </select>
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.habitat && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.habitat?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -404,45 +413,46 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
           )}
 
           {currentStep === 3 && (
-            <div>
-              <div style={{ width: "300px" }}>
-                <div
-                  style={{
-                    aspectRatio: "4 / 3",
-                    backgroundColor: "silver",
-                    overflow: "hidden",
-                  }}
-                >
-                  {imageFile && (
-                    <img
-                      src={previewSrc}
-                      alt="Fluffy photo"
-                      width="100%"
-                      height="100%"
-                      style={{ objectFit: "cover" }}
-                    />
-                  )}
+            <div className={s.formStep}>
+              <div className={s.formItemImageBlock}>
+                <div className={s.formItemImage}>
+                  <div className={s.greyImage}>
+                    {imageFile && (
+                      <img
+                        className={s.loadedImage}
+                        src={previewSrc}
+                        alt="Fluffy photo"
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
+                    {!imageFile && (
+                      <input
+                        className={s.inputImage}
+                        {...register("image")}
+                        type="file"
+                        accept="image/*"
+                        aria-label="Upload image"
+                        onChange={handleChange}
+                      />
+                    )}
+                  </div>
                 </div>
-                <input
-                  {...register("image")}
-                  type="file"
-                  accept="image/*"
-                  aria-label="Upload image"
-                  onChange={handleChange}
-                />
               </div>
 
-              <div>
-                <label>
-                  Type comments (optional)
-                  <textarea {...register("comments")} />
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}> Type comments (optional)</span>
+                  <textarea {...register("comments")} className={s.formInput} />
                 </label>
               </div>
 
-              <div>
-                <label>
-                  Donate size (UAH)
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Donate size (UAH)</span>
                   <input
+                    className={s.formInput}
                     {...register("priceForDonate", {
                       required: "Please add the price needed for donate",
                     })}
@@ -451,9 +461,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     min={0}
                   />
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.priceForDonate && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.priceForDonate?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -461,10 +471,11 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                 </div>
               </div>
 
-              <div>
-                <label>
-                  Accumulated donates (UAH)
+              <div className={s.formItem}>
+                <label className={s.formInputBlock}>
+                  <span className={s.formLabel}>Accumulated donates (UAH)</span>
                   <input
+                    className={s.formInput}
                     {...register("accumulatedPrice", {
                       required: "Please add the sum of accumulated money",
                     })}
@@ -473,9 +484,9 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
                     min={0}
                   />
                 </label>
-                <div>
+                <div className={s.errorBlock}>
                   {errors?.accumulatedPrice && (
-                    <p>
+                    <p className={s.error}>
                       {(errors?.accumulatedPrice?.message as React.ReactNode) ||
                         "Unexpected error!"}
                     </p>
@@ -485,15 +496,19 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
             </div>
           )}
           {currentStep < 3 ? (
-            <button
-              type="button"
-              disabled={!isValid}
+            <ButtonBlack
+              buttonBlackName="Continue"
               onClick={() => setCurrentStep((prev) => prev + 1)}
-            >
-              Continue
-            </button>
+              disabled={!isValid}
+              type="button"
+            />
           ) : (
-            <input type="submit" disabled={!isValid} />
+            <input
+              className={s.buttonBlack}
+              value="Add"
+              type="submit"
+              disabled={!isValid}
+            />
           )}
         </form>
       </div>

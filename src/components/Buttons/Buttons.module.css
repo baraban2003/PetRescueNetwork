@@ -38,3 +38,9 @@
 .buttonBlack:hover {
   background-color: var(--Gray50);
 }
+
+.buttonWite:disabled,
+.buttonBlack:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

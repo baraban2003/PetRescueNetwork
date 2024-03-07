@@ -3,6 +3,16 @@
   border: 1px solid transparent;
   padding: 20px;
   z-index: 2;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modal {
+  scrollbar-width: none;
 }
 
 .modalOverlay {
@@ -16,6 +26,7 @@
   align-items: center;
   backdrop-filter: blur(10px);
   background: rgba(160, 165, 172, 0.2);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 999;
   pointer-events: auto;
 }

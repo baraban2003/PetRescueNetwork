@@ -38,7 +38,132 @@
   color: var(--Gray100);
 }
 
-select {
-  max-height: 200px;
-  overflow-y: auto;
+.formItem:not(:first-child) {
+  margin-top: 45px;
+}
+
+.formItem:last-child {
+  margin-bottom: 88px;
+}
+
+.formInputBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  margin: 0 0 8px 24px;
+  color: var(--Gray70);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.formInput {
+  height: 48px;
+  box-sizing: border-box;
+  padding: 14px 24px 14px 24px;
+  border: 1px solid var(--Gray100);
+  border-radius: 30px;
+}
+
+.formInput {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.formItemImageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.greyImage {
+  width: 180px;
+  height: 180px;
+  overflow: "hidden";
+  background-image: url("../../assets/images/backgroundPhoto.png");
+}
+
+.loadedImage {
+  width: 180px;
+  height: 180px;
+  overflow: "hidden";
+  border-radius: 50%;
+}
+
+.formItemImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputImage::-webkit-file-upload-button {
+  display: none;
+}
+
+input[type="file"] {
+  margin: 0;
+  padding: 0;
+  color: transparent;
+}
+input[type="file"]::before {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+
+.inputImage {
+  width: 250px;
+  margin-top: 8px;
+
+  color: #333333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.errorBlock {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  top: 8px;
+  left: 24px;
+
+  color: var(--Error100);
+  font-family: Gambetta;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.buttonBlack {
+  width: 100%;
+  height: 48px;
+  align-items: center;
+  padding: 8px 28px 8px 28px;
+  background-color: var(--Gray100);
+  border: 0px;
+  color: var(--Gray0);
+  border-radius: 40px;
+  cursor: pointer;
+
+  font-family: General Sans;
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.buttonBlack:hover {
+  background-color: var(--Gray50);
+}
+
+.buttonWite:disabled,
+.buttonBlack:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
