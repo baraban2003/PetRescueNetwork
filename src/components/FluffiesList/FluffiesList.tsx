@@ -7,10 +7,30 @@ import s from "./FluffiesList.module.css"
 import { Fluffy } from "../../types/Fluffy"
 import { Pagination } from "@mui/material"
 import { fetchTotalItemCount } from "../../services/fetchAllIems"
+import { Modal } from "../Modal"
+import { FriendDetailed } from "../FriendDetailed"
+import oneFluffyOperation from "../../redux/oneFluffy/oneFluffyOperations"
 
 interface FluffiesState {
   isLoading: boolean
   items: Fluffy[]
+}
+
+interface OneFluffy {
+  id: number
+  name: string
+  type: string
+  healthCondition: string
+  sterilization: string
+  size: string
+  location: string
+  habitat: string
+  sex?: string
+  age: string
+  priceForDonate: number
+  accumulatedPrice: number
+  comments?: string
+  img?: string
 }
 
 export const FluffiesList = () => {
@@ -19,7 +39,13 @@ export const FluffiesList = () => {
   ) as FluffiesState
   const [page, setPage] = useState<number>(0)
   const [itemLength, setItemLength] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
+
   const dispatch = useAppDispatch()
+  const oneFluffy = useAppSelector(
+    (state) => state.getOneFluffy.item,
+  ) as OneFluffy
+
   const itemsPerPage = 16
 
   useEffect(() => {
@@ -44,6 +70,11 @@ export const FluffiesList = () => {
     setPage(page - 1)
   }
 
+  const handleClick = (friend: Fluffy) => {
+    dispatch(oneFluffyOperation.fetchOneFluffy(friend.id))
+    setModalOpen(true)
+  }
+
   return (
     <div className={s.fluffies}>
       {isLoading && <Spinner />}
@@ -51,6 +82,7 @@ export const FluffiesList = () => {
         {items.map((e) => (
           <Friend
             key={e.id}
+            handleClick={() => handleClick(e)}
             friend={{
               img: e.imageUrl,
               title: e?.title || "",
@@ -63,6 +95,21 @@ export const FluffiesList = () => {
           />
         ))}
       </ul>
+
+      {modalOpen && (
+        <Modal
+          onClose={() => setModalOpen(false)}
+          isOpen={modalOpen}
+          isOverlay={true}
+          isAvatarModal={false}
+        >
+          <FriendDetailed
+            friendDetailed={oneFluffy}
+            onClose={() => setModalOpen(false)}
+          />
+        </Modal>
+      )}
+
       <div className={s.pagination}>
         <Pagination
           count={totalPages}

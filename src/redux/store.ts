@@ -7,6 +7,7 @@ import {
 import { setupListeners } from "@reduxjs/toolkit/query"
 import navigationVisibleReducer from "./navigationVisible/navigationVisibleSlice"
 import fluffiesReducer from "./fluffies/fluffiesSlice"
+import oneFluffyReducer from "./oneFluffy/oneFluffySlice"
 import {
   persistStore,
   persistReducer,
@@ -31,6 +32,7 @@ const reducers = combineReducers({
   auth: persistReducer<User>(authPersistConfig, authSlice),
   navigationVisible: navigationVisibleReducer,
   getFluffies: fluffiesReducer,
+  getOneFluffy: oneFluffyReducer,
 })
 
 export const store = configureStore({

@@ -3,6 +3,7 @@
   height: 48px;
   align-items: center;
   padding: 8px 28px 8px 28px;
+  background-color: var(--Gray0);
   border: 1px solid var(--Gray100);
   border-radius: 40px;
   cursor: pointer;
@@ -14,8 +15,8 @@
 }
 
 .buttonWite:hover {
-  border: 1px solid var(--Gray50);
-  color: var(--Gray50);
+  border: 1px solid var(--Primary100);
+  color: var(--Primary100);
 }
 
 .buttonBlack {
@@ -36,7 +37,7 @@
 }
 
 .buttonBlack:hover {
-  background-color: var(--Gray50);
+  background-color: var(--Primary100);
 }
 
 .buttonWite:disabled,

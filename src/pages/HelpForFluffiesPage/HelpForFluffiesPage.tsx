@@ -2,20 +2,23 @@ import { Filters } from "../../components/Filters"
 import { FluffiesList } from "../../components/FluffiesList"
 import { fetchTotalItemCount } from "../../services/fetchAllIems"
 import s from "./HelpForFluffiesPage.module.css"
-import axios from "axios"
+import fluffiesOperation from "../../redux/fluffies/fluffiesOperations"
 import { useEffect, useState } from "react"
+import { useAppSelector } from "../../services/hooks"
 
 export const HelpForFluffiesPage = () => {
   const [length, setLength] = useState(0)
 
-  useEffect(() => {
-    const fetchDataAndSetLength = async () => {
-      const itemCount = await fetchTotalItemCount()
-      setLength(itemCount)
-    }
+  const { isLoading } = useAppSelector((state) => state.getFluffies)
 
-    fetchDataAndSetLength()
-  }, [])
+  const fetchAndUpdateLength = async () => {
+    const itemCount = await fetchTotalItemCount()
+    setLength(itemCount)
+  }
+
+  useEffect(() => {
+    fetchAndUpdateLength()
+  }, [isLoading])
 
   const getProjectWord = length === 1 ? "project" : "projects"
 
@@ -25,7 +28,6 @@ export const HelpForFluffiesPage = () => {
         <p className={s.fluffiesCalc}>{`${length} ${getProjectWord} `} found</p>
         <Filters />
       </div>
-
       <FluffiesList />
     </div>
   )

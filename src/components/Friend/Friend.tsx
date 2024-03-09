@@ -5,6 +5,7 @@ import s from "./Friend.module.css"
 import { ProgressBar } from "../ProgressBar"
 import { ButtonWhite } from "../Buttons/ButtonWhite"
 import { ButtonBlack } from "../Buttons/ButtonBlack"
+import { Fluffy } from "../../types/Fluffy"
 
 type Props = {
   friend: {
@@ -16,9 +17,10 @@ type Props = {
     intAccumulated: number
     comment?: string
   }
+  handleClick: () => void
 }
 
-export const Friend: React.FC<Props> = ({ friend }) => {
+export const Friend: React.FC<Props> = ({ friend, handleClick }) => {
   // const [showModal, setShowModal] = useState(false);
   const { img, title, sex, age, maxPriceForHelp, intAccumulated, comment } =
     friend
@@ -57,18 +59,23 @@ export const Friend: React.FC<Props> = ({ friend }) => {
 
   return (
     <li className={s.card}>
-      <img src={img} alt="friend" className={s.cardImage} />
+      <img
+        src={img}
+        alt="friend"
+        className={s.cardImage}
+        onClick={handleClick}
+      />
 
       <div className={s.likeIcon}>
         <LikeIcon />
       </div>
 
       <div className={s.cardText}>
-        <h3 className={s.cardTitle}>
+        <h3 className={s.cardTitle} onClick={handleClick}>
           {title} {comment}
         </h3>
 
-        <div className={s.cardInfoBlock}>
+        <div className={s.cardInfoBlock} onClick={handleClick}>
           {isShowAgeSex() && (
             <p className={s.cardInfo}>{`${sex}${isCommaShow()} ${age}`}</p>
           )}

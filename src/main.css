@@ -16,14 +16,16 @@ body {
   --Error100: #dd2d2a;
 
   --transition: all 0.3s ease-in-out;
+  --fontMain: "General Sans", sans-serif;
+  --fondSec: "Gambetta", serif;
 
-  font-family: "General Sans", sans-serif;
-  font-family: "Gambetta", serif;
+  font-family: var(--fontMain);
+  font-family: var(--fondSec);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: content-box;
-  max-width: 1312px;
+  width: 1312px;
   margin: 0 auto;
   padding: 40px 64px 81px;
   background-color: var(--sand);
@@ -396,4 +398,5 @@ template {
 
 .modalOpen {
   overflow: hidden;
+  padding-right: 79px;
 }
