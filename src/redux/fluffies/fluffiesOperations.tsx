@@ -4,10 +4,28 @@ import { Fluffy } from "../../types/Fluffy"
 
 export const fetchFluffies = createAsyncThunk(
   "fluffies/fetchAll",
-  async (page: number, thunkAPI) => {
+  async ({
+    fluffy = "",
+    page = 0,
+    purpose = "",
+    healthCondition = "",
+    animalType = "",
+    location = "",
+    habitat = "",
+    thunkAPI,
+  }: {
+    fluffy?: string
+    page?: number
+    purpose?: string
+    healthCondition?: string
+    animalType?: string
+    location?: string
+    habitat?: string
+    thunkAPI?: any
+  }) => {
     try {
       const response = await axios.get(
-        `/api/pets/search?page=${page}&size=16&sort=name`,
+        `api/pets/search?searchStringFromUser=${fluffy}&purpose=${purpose}&healthCondition=${healthCondition}&animalType=${animalType}&location=${location}&habitat=${habitat}&page=${page}&size=9999&sort=id`,
       )
       const fluffiesWithImageUrls = response.data.map((item: any) => ({
         ...item,

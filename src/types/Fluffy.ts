@@ -18,3 +18,9 @@ export interface Fluffy {
   title?: string
   fond?: boolean
 }
+
+export type Fluffies = {
+  items: Fluffy[]
+  isLoading: boolean
+  error: any
+}

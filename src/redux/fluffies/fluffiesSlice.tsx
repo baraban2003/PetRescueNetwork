@@ -1,12 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import fluffies from "./fluffiesOperations"
-import { Fluffy } from "../../types/Fluffy"
-
-type Fluffies = {
-  items: Fluffy[]
-  isLoading: boolean
-  error: any
-}
+import { Fluffies, Fluffy } from "../../types/Fluffy"
 
 const initialState: Fluffies = {
   items: [],

@@ -10,6 +10,8 @@ import {
   SelectChangeEvent,
 } from "@mui/material"
 import { toast } from "react-toastify"
+import { useAppDispatch } from "../../services/hooks"
+import * as searchOperation from "../../redux/fluffies/fluffiesOperations"
 
 export const Filters = () => {
   const [fluffy, setFluffy] = useState("")
@@ -19,16 +21,27 @@ export const Filters = () => {
   const [animalLocation, setAnimalLocation] = useState("")
   const [habitat, setHabitat] = useState("")
 
+  const dispatch = useAppDispatch()
+
   const handleSearchRequest = useCallback(
     debounce(
       (value: string) => {
-        console.log("Performing search for:", value)
-        //!!!Important - this will send request to the server
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy: value,
+            ////need dispatch only search
+            purpose,
+            healthCondition: health,
+            animalType,
+            location: animalLocation,
+            habitat,
+          }),
+        )
       },
       300,
       { trailing: true },
     ),
-    [],
+    [dispatch, fluffy, purpose, health, animalType, animalLocation, habitat],
   )
 
   const handleInputChange = (
@@ -40,26 +53,78 @@ export const Filters = () => {
     handleSearchRequest(value)
   }
 
-  const handleFiltersChange = (event: SelectChangeEvent) => {
-    switch (event.target.name) {
+  const handleFiltersChange = ({
+    target: { name, value },
+  }: SelectChangeEvent) => {
+    switch (name) {
       case "purpose":
-        setPurpose(event.target.value as string)
+        setPurpose(value as string)
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy,
+            purpose: value,
+            healthCondition: health,
+            animalType,
+            location: animalLocation,
+            habitat,
+          }),
+        )
         break
 
       case "health":
-        setHealth(event.target.value as string)
+        setHealth(value as string)
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy,
+            purpose,
+            healthCondition: value,
+            animalType,
+            location: animalLocation,
+            habitat,
+          }),
+        )
         break
 
       case "animalType":
-        setAnimalType(event.target.value as string)
+        setAnimalType(value as string)
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy,
+            purpose,
+            healthCondition: health,
+            animalType: value,
+            location: animalLocation,
+            habitat,
+          }),
+        )
         break
 
       case "animalLocation":
-        setAnimalLocation(event.target.value as string)
+        setAnimalLocation(value as string)
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy,
+            purpose,
+            healthCondition: health,
+            animalType,
+            location: value,
+            habitat,
+          }),
+        )
         break
 
       case "habitat":
-        setHabitat(event.target.value as string)
+        setHabitat(value as string)
+        dispatch(
+          searchOperation.fetchFluffies({
+            fluffy,
+            purpose,
+            healthCondition: health,
+            animalType,
+            location: animalLocation,
+            habitat: value,
+          }),
+        )
         break
 
       default:
@@ -202,14 +267,11 @@ export const Filters = () => {
               value={health}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"critical"} className={s.menuItem}>
+              <MenuItem value={"CRITICAL"} className={s.menuItem}>
                 Critical
               </MenuItem>
-              <MenuItem value={"needHelp"} className={s.menuItem}>
+              <MenuItem value={"NEEDS_HELP"} className={s.menuItem}>
                 Need help
-              </MenuItem>
-              <MenuItem value={"normal"} className={s.menuItem}>
-                Normal
               </MenuItem>
               <MenuItem value={""} className={s.menuItem}>
                 Clear
@@ -473,13 +535,13 @@ export const Filters = () => {
               value={habitat}
               onChange={handleFiltersChange}
             >
-              <MenuItem value={"goodHands"} className={s.menuItem}>
+              <MenuItem value={"IN_GOOD_HANDS"} className={s.menuItem}>
                 In good hands
               </MenuItem>
-              <MenuItem value={"shelter"} className={s.menuItem}>
+              <MenuItem value={"IN_SHELTER"} className={s.menuItem}>
                 In a shelter
               </MenuItem>
-              <MenuItem value={"stray"} className={s.menuItem}>
+              <MenuItem value={"STRAY"} className={s.menuItem}>
                 Stray
               </MenuItem>
               <MenuItem value={""} className={s.menuItem}>

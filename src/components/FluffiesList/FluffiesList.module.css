@@ -9,5 +9,18 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 48px;
+  gap: 32px;
+}
+.invisibleButton {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: fill 0.4s ease;
+}
+
+.invisibleButton:hover path {
+  fill: var(--Primary100);
 }

@@ -5,11 +5,11 @@ import { Spinner } from "../Spinner"
 import { Friend } from "../Friend"
 import s from "./FluffiesList.module.css"
 import { Fluffy } from "../../types/Fluffy"
-import { Pagination } from "@mui/material"
-import { fetchTotalItemCount } from "../../services/fetchAllIems"
 import { Modal } from "../Modal"
 import { FriendDetailed } from "../FriendDetailed"
 import oneFluffyOperation from "../../redux/oneFluffy/oneFluffyOperations"
+import LeftArrow from "../../assets/icons/paginationLeft.svg?react"
+import RightArrow from "../../assets/icons/paginationRight.svg?react"
 
 interface FluffiesState {
   isLoading: boolean
@@ -38,48 +38,35 @@ export const FluffiesList = () => {
     (state) => state.getFluffies,
   ) as FluffiesState
   const [page, setPage] = useState<number>(0)
-  const [itemLength, setItemLength] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const itemsPerPage = 16
 
   const dispatch = useAppDispatch()
   const oneFluffy = useAppSelector(
     (state) => state.getOneFluffy.item,
   ) as OneFluffy
 
-  const itemsPerPage = 16
-
   useEffect(() => {
-    dispatch(fluffiesOperation.fetchFluffies(page))
-  }, [dispatch, page])
-
-  useEffect(() => {
-    const fetchDataAndSetLength = async () => {
-      const itemCount = await fetchTotalItemCount()
-      setItemLength(itemCount)
-    }
-
-    fetchDataAndSetLength()
-  }, [])
-
-  const totalPages = Math.ceil(itemLength / itemsPerPage)
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
-    setPage(page - 1)
-  }
+    dispatch(fluffiesOperation.fetchFluffies({}))
+  }, [dispatch])
 
   const handleClick = (friend: Fluffy) => {
     dispatch(oneFluffyOperation.fetchOneFluffy(friend.id))
     setModalOpen(true)
   }
 
+  const totalPages = Math.ceil(items.length / itemsPerPage)
+  if (page > totalPages) {
+    setPage(0)
+  }
+  const startIndex = page * itemsPerPage
+  const displayedItems = items.slice(startIndex, startIndex + itemsPerPage)
+
   return (
     <div className={s.fluffies}>
       {isLoading && <Spinner />}
       <ul className={s.fluffiesList}>
-        {items.map((e) => (
+        {displayedItems.map((e) => (
           <Friend
             key={e.id}
             handleClick={() => handleClick(e)}
@@ -111,12 +98,23 @@ export const FluffiesList = () => {
       )}
 
       <div className={s.pagination}>
-        <Pagination
-          count={totalPages}
-          page={page + 1}
-          shape="rounded"
-          onChange={handlePageChange}
-        />
+        <button
+          onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 0))}
+          disabled={page === 0}
+          className={s.invisibleButton}
+        >
+          <LeftArrow />
+        </button>
+        <span>{`Page ${page + 1} of ${totalPages}`}</span>
+        <button
+          onClick={() =>
+            setPage((prevPage) => Math.min(prevPage + 1, totalPages - 1))
+          }
+          disabled={page === totalPages - 1}
+          className={s.invisibleButton}
+        >
+          <RightArrow />
+        </button>
       </div>
     </div>
   )

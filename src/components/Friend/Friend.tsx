@@ -1,11 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import LikeIcon from "../../assets/icons/likeIcon.svg?react"
 
 import s from "./Friend.module.css"
 import { ProgressBar } from "../ProgressBar"
 import { ButtonWhite } from "../Buttons/ButtonWhite"
 import { ButtonBlack } from "../Buttons/ButtonBlack"
-import { Fluffy } from "../../types/Fluffy"
 
 type Props = {
   friend: {
