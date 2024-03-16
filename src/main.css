@@ -17,10 +17,10 @@ body {
 
   --transition: all 0.3s ease-in-out;
   --fontMain: "General Sans", sans-serif;
-  --fondSec: "Gambetta", serif;
+  --fontSec: "Gambetta", serif;
 
   font-family: var(--fontMain);
-  font-family: var(--fondSec);
+  font-family: var(--fontSec);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

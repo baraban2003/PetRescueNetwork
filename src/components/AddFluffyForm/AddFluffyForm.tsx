@@ -69,7 +69,7 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
       )
 
       if (addFluffyOperations.addFluffy.fulfilled.match(actionResult)) {
-        dispatch(fetchFluffies(0))
+        dispatch(fetchFluffies({}))
       } else {
         console.error("Failed to add fluffy:", actionResult.error)
       }
@@ -80,7 +80,7 @@ export const AddFluffyForm: React.FC<AddFluffyFormProps> = ({
       setModalOpen(false)
 
       setTimeout(() => {
-        dispatch(fetchFluffies(0))
+        dispatch(fetchFluffies({}))
       }, 5000)
     } catch (error) {
       console.error("Error converting file to byte array:", error)

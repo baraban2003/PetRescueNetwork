@@ -87,13 +87,7 @@ export function App() {
                 Help for fluffies
               </NavLink>
 
-              <NavLink
-                className={getActiveLinkClass}
-                to={{
-                  pathname: "/howtohelp",
-                  search: location.search,
-                }}
-              >
+              <NavLink className={getActiveLinkClass} to="/howtohelp">
                 How to help
               </NavLink>
               <NavLink
