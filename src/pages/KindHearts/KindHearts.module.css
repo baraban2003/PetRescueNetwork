@@ -1,0 +1,40 @@
+.page {
+  display: flex;
+  gap: 32px;
+  margin-top: 132px;
+}
+
+.leftSideStatItems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSideStatItems:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.leftSideStatItemsText {
+  width: 192px;
+}
+
+.leftSideStatNum {
+  width: 80px;
+  text-align: center;
+}
+
+.leftSideTitle {
+  font-family: var(--fontMain);
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.leftSideStatItemsText,
+.leftSideStatItemsNumItem {
+  font-family: var(--fontSec);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--Gray70);
+}

@@ -7,7 +7,8 @@ import { Login } from "./pages/LoginPage/"
 import { Suspense } from "react"
 import { Spinner } from "./components/Spinner"
 import { HelpForFluffiesPage } from "./pages/HelpForFluffiesPage"
-import { HowToHelpPage } from "./pages/HowToHelpPege"
+import { HowToHelpPage } from "./pages/HowToHelpPage"
+import { KindHearts } from "./pages/KindHearts"
 
 export const Root = () => (
   <Router>
@@ -18,7 +19,7 @@ export const Root = () => (
           <Route path=":fluffie?" element={<HelpForFluffiesPage />} />
         </Route>
         <Route path="howtohelp" element={<HowToHelpPage />} />
-        <Route path="yourkindhearts" element={<Spinner />} />
+        <Route path="yourkindhearts" element={<KindHearts />} />
         <Route
           path="register"
           element={
